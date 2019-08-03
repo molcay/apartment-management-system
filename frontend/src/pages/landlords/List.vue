@@ -42,35 +42,39 @@
 </template>
 
 <script>
-  import { TheMask } from 'vue-the-mask'
-  import api from '../../clients/API'
+import { TheMask } from "vue-the-mask"
+import api from "../../clients/API"
 
-  export default {
-    name: 'LandlordList',
-    components: {
-      TheMask,
-    },
-    data() {
-      return {
-        pageInfo: {
-          title: 'Mülk Sahipleri',
-          button: {
-            text: 'Yeni Mülk Sahibi',
-            path_suffix: '/ekle',
+export default {
+  name: "LandlordList",
+  components: {
+    TheMask
+  },
+  data() {
+    return {
+      pageInfo: {
+        title: "Mülk Sahipleri",
+        buttons: [
+          {
+            text: "Yeni Mülk Sahibi",
+            icon: "fa fa-plus-circle",
+            color: "is-success",
+            path_suffix: `${this.$route.path}/ekle`
           }
-        },
-        landlord: [],
-      }
-    },
-    mounted() {
-      this.getLandlords().then(landlord => {
-        this.landlord = landlord
-      })
-    },
-    methods: {
-      getLandlords: () => {
-        return api.getLandlords()
-      }
+        ]
+      },
+      landlord: []
+    }
+  },
+  mounted() {
+    this.getLandlords().then(landlord => {
+      this.landlord = landlord
+    })
+  },
+  methods: {
+    getLandlords: () => {
+      return api.getLandlords()
     }
   }
+}
 </script>

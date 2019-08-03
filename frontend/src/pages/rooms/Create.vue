@@ -174,7 +174,7 @@
         <div class="field">
           <div class="control">
             <button class="button is-primary">
-              <span class="icon is-small"><i class="fa fa-save"/></span>
+              <span class="icon is-small"><i class="fa fa-save" /></span>
               <span>Kaydet</span>
             </button>
           </div>

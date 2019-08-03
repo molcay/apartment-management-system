@@ -1,7 +1,7 @@
 <template>
   <div class="field is-horizontal">
     <div class="field-label is-normal">
-      <slot name="labelElement"></slot>
+      <slot name="labelElement" />
     </div>
     <div class="field-body">
       <div class="field">

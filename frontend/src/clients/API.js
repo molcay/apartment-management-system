@@ -152,8 +152,8 @@ class API {
       .catch(error => error)
   }
 
-  deleteLandlord() {
-    return API.delete(``)
+  deleteLandlord(id) {
+    return API.delete(`/tenants/${id}/`)
       .then(response => response.data)
       .catch(error => error)
   }

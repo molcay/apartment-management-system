@@ -12,6 +12,8 @@ import CreateTenant from './pages/tenants/Create'
 import CreateGuarantor from './pages/guarantors/Create'
 import CreateAgreement from './pages/agreements/Create'
 import DetailedAgreement from './pages/agreements/Details'
+import DetailedLandlord from './pages/landlords/Details'
+import DetailedGuarantor from './pages/guarantors/Details'
 
 import {tr_to_ascii} from "./helper"
 
@@ -39,6 +41,10 @@ const router = new VueRouter({
       component: GuarantorList,
     },
     {
+      path: '/kefiller/:id/detay',
+      component: DetailedGuarantor,
+    },
+    {
       path: tr_to_ascii('/mülk_sahipleri'),
       component: LandlordList,
     },
@@ -49,6 +55,10 @@ const router = new VueRouter({
     {
       path: tr_to_ascii('/mülk_sahipleri/ekle'),
       component: CreateLandlord,
+    },
+    {
+      path: tr_to_ascii('/mülk_sahipleri/:id/detay'),
+      component: DetailedLandlord,
     },
     {
       path: tr_to_ascii('/kiracılar/ekle'),
@@ -66,6 +76,7 @@ const router = new VueRouter({
       path: tr_to_ascii('/sözleşmeler/:id/detay'),
       component: DetailedAgreement,
     },
+
   ]
 })
 

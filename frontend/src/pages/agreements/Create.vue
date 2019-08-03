@@ -100,8 +100,11 @@
           >
             <select
               id="field-guarantor"
-              v-model="fields.guarantor">
-              <option value="-1">Kefil seç</option>
+              v-model="fields.guarantor"
+            >
+              <option value="-1">
+                Kefil seç
+              </option>
               <option
                 v-for="guarantor in guarantors"
                 :key="guarantor.id"

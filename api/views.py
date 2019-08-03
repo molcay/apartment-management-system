@@ -16,8 +16,17 @@ class GuarantorListView(generics.ListAPIView):
     queryset = Guarantor.objects.all()
     serializer_class = GuarantorSerializer
 
+class GuarantorRetrieveView(generics.RetrieveAPIView):
+    queryset = Guarantor.objects.all()
+    serializer_class = GuarantorSerializer
+
 
 class LandlordListView(generics.ListAPIView):
+    queryset = Landlord.objects.all()
+    serializer_class = LandlordSerializer
+
+
+class LandlordRetrieveView(generics.RetrieveAPIView):
     queryset = Landlord.objects.all()
     serializer_class = LandlordSerializer
 
