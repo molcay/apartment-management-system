@@ -331,3 +331,4 @@ pip-selfcheck.json
 # End of https://www.gitignore.io/api/venv,python,pycharm,virtualenv,pycharm+iml,pycharm+all
 
 generated/
+.vscode/settings.json

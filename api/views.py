@@ -11,6 +11,9 @@ class TenantListView(generics.ListAPIView):
     queryset = Tenant.objects.all()
     serializer_class = TenantSerializer
 
+class TenantRetrieveView(generics.RetrieveAPIView):
+    queryset = Tenant.objects.all()
+    serializer_class = TenantSerializer
 
 class GuarantorListView(generics.ListAPIView):
     queryset = Guarantor.objects.all()
@@ -35,6 +38,9 @@ class RoomListView(generics.ListAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
+class RoomRetrieveView(generics.RetrieveAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
 
 class BaseViewSet(viewsets.ModelViewSet):
     # TODO: add permissions here
