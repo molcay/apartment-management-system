@@ -14,6 +14,8 @@ import CreateAgreement from './pages/agreements/Create'
 import DetailedAgreement from './pages/agreements/Details'
 import DetailedLandlord from './pages/landlords/Details'
 import DetailedGuarantor from './pages/guarantors/Details'
+import EditedLandlord from './pages/landlords/Edit'
+
 
 import {tr_to_ascii} from "./helper"
 
@@ -59,6 +61,10 @@ const router = new VueRouter({
     {
       path: tr_to_ascii('/mülk_sahipleri/:id/detay'),
       component: DetailedLandlord,
+    },
+    {
+      path: tr_to_ascii('/mülk_sahipleri/:id/düzenle'),
+      component: EditedLandlord,
     },
     {
       path: tr_to_ascii('/kiracılar/ekle'),

@@ -11,6 +11,10 @@ class API {
     return axios.post(`${API.API_V1_PREFIX}${path}`, data)
   }
 
+  static put(path, data) {
+    return axios.put(`${API.API_V1_PREFIX}${path}`,data)
+  }
+
   static delete(path) {
     return axios.delete(`${API.API_V1_PREFIX}${path}`)
   }
@@ -122,8 +126,8 @@ class API {
       .catch(error => error)
   }
 
-  saveLandlord() {
-    return API.post(``)
+  saveLandlord(id, newLandlord) {
+    return API.put(`/landlords/${id}/`, newLandlord)
       .then(response => response.data)
       .catch(error => error)
   }
