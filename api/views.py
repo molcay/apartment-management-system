@@ -11,12 +11,15 @@ class TenantListView(generics.ListAPIView):
     queryset = Tenant.objects.all()
     serializer_class = TenantSerializer
 
+class TenantRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Tenant.objects.all()
+    serializer_class = TenantSerializer
 
 class GuarantorListView(generics.ListAPIView):
     queryset = Guarantor.objects.all()
     serializer_class = GuarantorSerializer
 
-class GuarantorRetrieveView(generics.RetrieveAPIView):
+class GuarantorRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Guarantor.objects.all()
     serializer_class = GuarantorSerializer
 
@@ -25,7 +28,7 @@ class LandlordListView(generics.ListAPIView):
     queryset = Landlord.objects.all()
     serializer_class = LandlordSerializer
 
-class LandlordRetrieveUpdateView(generics.RetrieveUpdateAPIView):
+class LandlordRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Landlord.objects.all()
     serializer_class = LandlordSerializer
 
@@ -33,10 +36,12 @@ class RoomListView(generics.ListAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
-class BaseViewSet(viewsets.ModelViewSet):
-    # TODO: add permissions here
-    pass
+class RoomRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
 
+class BaseViewSet(viewsets.ModelViewSet):    # TODO: add permissions here
+    pass
 
 class AgreementViewSet(BaseViewSet):
     queryset = Agreement.objects.all()

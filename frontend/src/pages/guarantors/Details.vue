@@ -13,13 +13,11 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <input
-          id="field-first-name"
-          class="input"
-          :class="{'is-danger': errors && errors.first_name}"
-          type="text"
-          placeholder="Ad (örn: Muhammed Olcay)"
-        >
+        <div class="select">
+          <select disabled>
+            <option> {{ guarantor.first_name }} </option>
+          </select>
+        </div>
       </template>
       <template v-slot:helperText>
         <p
@@ -41,13 +39,11 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <input
-          id="field-last-name"
-          class="input"
-          :class="{'is-danger': errors && errors.last_name}"
-          type="text"
-          placeholder="Soyad (örn: TERCANLI)"
-        >
+        <div class="select">
+          <select disabled>
+            <option> {{ guarantor.last_name }} </option>
+          </select>
+        </div>
       </template>
       <template v-slot:helperText>
         <p
@@ -69,15 +65,11 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <input
-          id="field-tc"
-          class="input"
-          :class="{'is-danger': errors && errors.tc}"
-          type="text"
-          minlength="11"
-          maxlength="11"
-          placeholder="T.C. Kimlik Numarası (örn: 12345678900)"
-        >
+        <div class="select">
+          <select disabled>
+            <option> {{ guarantor.tc }} </option>
+          </select>
+        </div>
       </template>
       <template v-slot:helperText>
         <p
@@ -98,16 +90,12 @@
           Cep Telefonu
         </label>
       </template>
-      <template v-slot:inputElement>
-        <input
-          id="field-gsm"
-          class="input"
-          :class="{'is-danger': errors && errors.gsm}"
-          type="text"
-          minlength="11"
-          maxlength="11"
-          placeholder="Cep Telefonu (örn: 05301234567)"
-        >
+     <template v-slot:inputElement>
+        <div class="select">
+          <select disabled>
+            <option> {{ guarantor.gsm }} </option>
+          </select>
+        </div>
       </template>
       <template v-slot:helperText>
         <p
@@ -129,13 +117,11 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <textarea
-          id="field-address"
-          class="textarea has-fixed-size"
-          :class="{'is-danger': errors && errors.address}"
-          placeholder="Ev Adresi"
-          rows="3"
-        />
+        <div class="select">
+          <select disabled>
+            <option> {{ guarantor.address }} </option>
+          </select>
+        </div>
       </template>
       <template v-slot:helperText>
         <p
@@ -157,13 +143,11 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <textarea
-          id="field-work-address"
-          class="textarea has-fixed-size"
-          :class="{'is-danger': errors && errors.work_address}"
-          placeholder="İş Adresi"
-          rows="3"
-        />
+        <div class="select">
+          <select disabled>
+            <option> {{ guarantor.work_address }} </option>
+          </select>
+        </div>
       </template>
       <template v-slot:helperText>
         <p
@@ -174,22 +158,6 @@
         </p>
       </template>
     </FormInput>
-
-    <div class="field is-horizontal">
-      <div class="field-label">
-        <!-- Left empty for spacing -->
-      </div>
-      <div class="field-body">
-        <div class="field">
-          <div class="control">
-            <button class="button is-primary">
-              <span class="icon is-small"><i class="fa fa-save" /></span>
-              <span>Kaydet</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
