@@ -16,7 +16,7 @@
     </router-link>
     <a
       href="#"
-      class="button is-danger is-small"
+      class="button is-danger"
       @:click="deleteEntity"
     >
       <span class="icon is-small"><i class="fa fa-minus-circle" /></span>
