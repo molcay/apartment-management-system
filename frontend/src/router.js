@@ -43,7 +43,7 @@ const router = new VueRouter({
       component: DetailedRoom,
     },
     {
-      path: ('/odalar/:id/düzenle'),
+      path: tr_to_ascii('/odalar/:id/düzenle'),
       component: EditedRoom,
     },
     {

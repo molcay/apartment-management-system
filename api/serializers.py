@@ -20,13 +20,15 @@ class LandlordSerializer(serializers.ModelSerializer):
         model = Landlord
         fields = '__all__'
 
-
-class RoomSerializer(serializers.ModelSerializer):
-    landlord = LandlordSerializer()
+class RoomUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Room
         fields = '__all__'
+
+
+class RoomSerializer(RoomUpdateSerializer):
+    landlord = LandlordSerializer()
 
 
 class AgreementSerializer(serializers.ModelSerializer):

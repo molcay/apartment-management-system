@@ -1,8 +1,6 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div>
-    <PageHeader
-      :page-info="pageInfo"
-    />
+    <PageHeader :page-info="pageInfo" />
     <FormInput>
       <template v-slot:labelElement>
         <label class="label">Bina Numarası</label>
@@ -72,41 +70,41 @@
 
 
 <script>
-  import api from "../../clients/API"
+import api from "../../clients/API"
 
-  export default {
-    name: 'DetailedRoom',
-    data() {
-      return {
-        room: null,
-        pageInfo: {
-          title: 'Odalar',
-          buttons: [
-            {
-              text: 'Düzenle',
-              icon: 'fas fa-edit',
-              color: 'is-warning',
-              path_suffix: `${this.$route.path}/duzenle`,
-            },
-            {
-              text: 'Sil',
-              icon: 'fa fa-minus-circle',
-              color: 'is-danger',
-              path_suffix: `${this.$route.path}/duzenle`,
-            },
-          ],
-        },
+export default {
+  name: "DetailedRoom",
+  data() {
+    return {
+      room: null,
+      pageInfo: {
+        title: "Odalar",
+        buttons: [
+          {
+            text: "Düzenle",
+            icon: "fas fa-edit",
+            color: "is-warning",
+            path_suffix: `${this.$route.path.replace("detay", "duzenle")}`
+          },
+          {
+            text: "Sil",
+            icon: "fa fa-minus-circle",
+            color: "is-danger",
+            path_suffix: `${this.$route.path.replace("detay", "sil")}`
+          }
+        ]
       }
-    },
-    mounted() {
-      this.getDetails(this.$route.params.id).then(data => {
-          this.room = data
-        })
-    },
-    methods: {
-      getDetails: (id) => {
-        return api.getRoom(id)
-      }
-    },
+    }
+  },
+  mounted() {
+    this.getDetails(this.$route.params.id).then(data => {
+      this.room = data
+    })
+  },
+  methods: {
+    getDetails: id => {
+      return api.getRoom(id)
+    }
   }
+}
 </script>

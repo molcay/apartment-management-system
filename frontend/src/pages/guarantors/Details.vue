@@ -90,7 +90,7 @@
           Cep Telefonu
         </label>
       </template>
-     <template v-slot:inputElement>
+      <template v-slot:inputElement>
         <div class="select">
           <select disabled>
             <option> {{ guarantor.gsm }} </option>
@@ -177,13 +177,12 @@
               text: 'Düzenle',
               icon: 'fas fa-edit',
               color: 'is-warning',
-              path_suffix: `${this.$route.path}/duzenle`,
-            },
+              path_suffix: `${this.$route.path.replace("detay","duzenle",)}`            },
             {
               text: 'Sil',
               icon: 'fa fa-minus-circle',
               color: 'is-danger',
-              path_suffix: `${this.$route.path}/sil`,
+             path_suffix: `${this.$route.path.replace("detay","sil")}`
             },
           ],
         },

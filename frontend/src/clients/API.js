@@ -120,8 +120,8 @@ class API {
       .catch(error => error)
   }
 
-  saveGuarantor() {
-    return API.post(``)
+  saveGuarantor(id, newGuarantor) {
+    return API.put(`/guarantors/${id}/`, newGuarantor)
       .then(response => response.data)
       .catch(error => error)
   }
@@ -132,8 +132,8 @@ class API {
       .catch(error => error)
   }
 
-  saveRoom() {
-    return API.post(``)
+  saveRoom(id, newRoom) {
+    return API.put(`/rooms/${id}/`, newRoom)
       .then(response => response.data)
       .catch(error => error)
   }
