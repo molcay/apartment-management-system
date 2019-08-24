@@ -134,8 +134,6 @@ class API {
 
   saveRoom(id, newRoom) {
     return API.put(`/rooms/${id}/`, newRoom)
-      .then(response => response.data)
-      .catch(error => error)
   }
 
   saveTenant() {

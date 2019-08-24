@@ -1,7 +1,7 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div>
     <PageHeader :page-info="pageInfo" />
-    <form action>
+    <form>
       <FormInput>
         <template v-slot:labelElement>
           <label class="label">Bina Numarası</label>
@@ -67,15 +67,21 @@
           <label class="label">Başlık/İsim</label>
         </template>
         <template v-slot:inputElement>
-          <input
-            v-model="room.landlord.title"
-            class="input"
-            :class="{'is-danger': errors && errors.title}"
-            type="text"
-            placeholder="Başlık/İsim"
-          >
+          <div class="select">
+            <select v-model="room.landlord">
+              <option
+                v-for="l in landlords"
+                :key="l.id"
+                :value="l"
+                :selected="l===room.landlord"
+              >
+                {{ l.title }}
+              </option>
+            </select>
+          </div>
         </template>
       </FormInput>
+
       <div class="field is-horizontal">
         <div class="field-label">
           <!-- Left empty for spacing -->
@@ -85,7 +91,7 @@
             <div class="control">
               <button
                 class="button is-primary"
-                :click="save()"
+                @click="saveLandlord"
               >
                 <span class="icon is-small">
                   <i class="fa fa-save" />
@@ -109,6 +115,7 @@ export default {
   data() {
     return {
       room: {},
+      landlords: [],
       pageInfo: {
         title: "Odalar",
         buttons: [
@@ -125,27 +132,38 @@ export default {
             path_suffix: `${this.$route.path.replace("duzenle", "sil")}`
           }
         ]
-      }
+      },
+      errors: {}
     }
   },
   mounted() {
     this.getDetails(this.$route.params.id).then(data => {
       this.room = data
+    }),
+    this.getLandlords().then(landlords => {
+      this.landlords = landlords
     })
   },
   methods: {
     getDetails: id => {
       return api.getRoom(id)
     },
-    save() {
+    getLandlords: () => {
+      return api.getLandlords()
+    },
+    saveLandlord: async function() {
       const newRoom = {
         building_number: this.room.building_number,
         home_number: this.room.home_number,
         room_number: this.room.room_number,
         size: this.room.size,
-        landlord: this.room.landlord,        
+        landlord: this.room.landlord.id
       }
-      return api.saveRoom(this.room.id, newRoom)
+      const resp = await api.saveRoom(this.room.id, newRoom)
+      if(resp.status==200){
+        return this.$router.push("/odalar")
+      }
+
     }
   }
 }
