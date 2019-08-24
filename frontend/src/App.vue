@@ -120,10 +120,10 @@
         } else {
           bulmaToast.toast({
             message: `Aramak için en az 3 harf girmeniz gerekmektedir`,
-            type: 'is-warning',
+            type: 'is-danger',
             position: "top-right",
-            duration: 2000,
-            closeOnClick: true,
+            duration: 2500,
+            dismissible: true,
           })
         }
       }

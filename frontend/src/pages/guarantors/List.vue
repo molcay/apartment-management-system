@@ -19,8 +19,19 @@
         >
           <td>{{ g.first_name }} {{ g.last_name }}</td>
           <td>{{ g.tc }}</td>
-          <td>{{ g.gsm }}</td>
-          <EntityActions :entity="g" :getEntityList="getGuarantors"/>
+          <td>
+            <the-mask
+              class="span"
+              disabled="disabled"
+              :mask="['0### ### ####']"
+              :value="g.gsm"
+              type="tel"
+            />
+          </td>
+          <EntityActions
+            :entity="g"
+            :get-entity-list="getGuarantors"
+          />
         </tr>
       </tbody>
     </table>
@@ -28,10 +39,14 @@
 </template>
 
 <script>
+  import {TheMask} from 'vue-the-mask'
   import api from '../../clients/API'
 
   export default {
     name: 'GuarantorList',
+    components: {
+      TheMask,
+    },
     data() {
       return {
         pageInfo: {
@@ -53,10 +68,7 @@
     },
     methods: {
       getGuarantors: async function () {
-        console.log("getGuarantors called")
-        const guarantors = await api.getGuarantors()
-        this.guarantors = guarantors
-        
+        this.guarantors = await api.getGuarantors()
       }
     }
   }
