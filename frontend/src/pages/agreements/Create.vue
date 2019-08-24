@@ -110,7 +110,8 @@
                 :key="guarantor.id"
                 :value="guarantor.id"
               >
-                {{ guarantor.full_name }}
+                {{ guarantor.first_name }}
+                {{ guarantor.last_name}}
               </option>
             </select>
           </div>

@@ -11,8 +11,9 @@ class API {
     return axios.post(`${API.API_V1_PREFIX}${path}`, data)
   }
 
-  static delete(path) {
-    return axios.delete(`${API.API_V1_PREFIX}${path}`)
+  static delete(path, data) {
+    console.log(`${API.API_V1_PREFIX}${path}`)
+    return axios.delete(`${API.API_V1_PREFIX}${path}`,data)
   }
 
   getAgreements() {
@@ -84,90 +85,91 @@ class API {
     return API.get(`/agreements/${id}/`)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   getGuarantor(id) {
     return API.get(`/guarantors/${id}/`)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   getLandlord(id) {
     return API.get(`/landlords/${id}/`)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   getRoom(id) {
     return API.get(`/rooms/${id}/`)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   getTenant(id) {
     return API.get(`/tenants/${id}/`)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   saveAgreement() {
     return API.post(``)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   saveGuarantor() {
     return API.post(``)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   saveLandlord() {
     return API.post(``)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   saveRoom() {
     return API.post(``)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   saveTenant() {
     return API.post(``)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   deleteAgreement() {
     return API.delete(``)
-      .then(response => response.data)
-      .catch(error => error)
   }
 
-  deleteGuarantor() {
-    return API.delete(``)
-      .then(response => response.data)
-      .catch(error => error)
+  deleteGuarantor(id) {
+    console.log(id)
+    return API.delete(`/guarantors/${id}/`)
   }
 
   deleteLandlord(id) {
-    return API.delete(`/tenants/${id}/`)
-      .then(response => response.data)
-      .catch(error => error)
+    return API.delete(`/landlords/${id}/`)
   }
 
-  deleteRoom() {
-    return API.delete(``)
-      .then(response => response.data)
-      .catch(error => error)
+  deleteRoom(id) {
+    return API.delete(`/rooms/${id}/`)
   }
 
-  deleteTenant() {
-    return API.delete(``)
-      .then(response => response.data)
-      .catch(error => error)
+  deleteTenant(id) {
+    return API.delete(`/tenants/${id}`)
   }
 }
 

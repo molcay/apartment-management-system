@@ -47,6 +47,9 @@ const router = new VueRouter({
       component: DetailedGuarantor,
     },
     {
+      path: '/kefiller/:id/sil',
+    },
+    {
       path: tr_to_ascii('/mülk_sahipleri'),
       component: LandlordList,
     },
@@ -59,6 +62,9 @@ const router = new VueRouter({
       component: DetailedRoom,
     },
     {
+      path: ('/odalar/:id/sil'),
+    },
+    {
       path: tr_to_ascii('/mülk_sahipleri/ekle'),
       component: CreateLandlord,
     },
@@ -67,8 +73,14 @@ const router = new VueRouter({
       component: DetailedLandlord,
     },
     {
+      path: tr_to_ascii('/mülk_sahipleri/:id/sil'),
+    },
+    {
       path: tr_to_ascii('/kiracılar/ekle'),
       component: CreateTenant,
+    },
+    {
+      path: tr_to_ascii('/kiracılar/:id/sil'),
     },
     {
       path: tr_to_ascii('/kiracılar/:id/detay'),

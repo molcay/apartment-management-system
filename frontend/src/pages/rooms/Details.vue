@@ -92,7 +92,7 @@
               text: 'Sil',
               icon: 'fa fa-minus-circle',
               color: 'is-danger',
-              path_suffix: `${this.$route.path}/duzenle`,
+              path_suffix: `${this.$route.path}/sil`,
             },
           ],
         },

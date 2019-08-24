@@ -34,7 +34,7 @@
           <td>{{ t.email }}</td>
           <td>{{ t.address }}</td>
           <td>{{ t.work_address }}</td>
-          <EntityActions :entity="t" />
+          <EntityActions :entity="t" :getEntityList="getTenants"/>
         </tr>
       </tbody>
     </table>
@@ -67,13 +67,13 @@
       }
     },
     mounted() {
-      this.getTenants().then(tenants => {
-        this.tenants = tenants
-      })
+      this.getTenants()
     },
     methods: {
-      getTenants: () => {
-        return api.getTenants()
+      getTenants: async function () {
+        console.log("getTenants called")
+        const tenants = await api.getTenants()
+        this.tenants = tenants
       }
     }
   }
