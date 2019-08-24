@@ -1,21 +1,21 @@
 <template>
-  <div class="is-flex">
+  <div class="has-text-centered level">
     <router-link
       :to="`${$route.path}/${entity.id}/detay`"
-      class="button is-link is-small"
+      class="button is-link"
     >
       <span class="icon is-small"><i class="fa fa-info-circle" /></span>
       <span>Detay</span>
     </router-link>
     <router-link
       :to="`${$route.path}/${entity.id}/${tr_to_ascii('düzenle')}`"
-      class="button is-warning is-small"
+      class="button is-warning"
     >
-      <span class="icon is-small"><i class="fas fa-edit" /></span>
+      <span class="icon is-smal"><i class="fas fa-edit" /></span>
       <span>Düzenle</span>
     </router-link>
-    <a href="#" v-on:click="deleteEntity()" class="button is-danger is-small">
-      <span class="icon is-small"><i class="fa fa-minus-circle" /></span>
+    <a href="#" v-on:click="deleteEntity()" class="button is-danger has-text-right">
+      <span class="icon is-small is-right"><i class="fa fa-minus-circle" /></span>
       <span>Sil</span>
     </a>
   </div>

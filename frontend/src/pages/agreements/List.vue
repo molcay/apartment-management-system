@@ -24,7 +24,7 @@
           <td>{{ a.tenant.first_name }} {{ a.tenant.last_name }}</td>
           <td>{{ a.start_date }}</td>
           <td>{{ a.end_date }}</td>
-          <EntityActions :entity="a" />
+          <td><EntityActions :entity="a"/></td>
         </tr>
       </tbody>
     </table>

@@ -20,7 +20,7 @@
           <td>{{ g.first_name }} {{ g.last_name }}</td>
           <td>{{ g.tc }}</td>
           <td>{{ g.gsm }}</td>
-          <EntityActions :entity="g" :getEntityList="getGuarantors"/>
+          <td><EntityActions :entity="g" :getEntityList="getGuarantors"/></td>
         </tr>
       </tbody>
     </table>

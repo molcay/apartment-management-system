@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr
+        <tr class="is-vcentered"
           v-for="t in tenants"
           :key="t.id"
         >
@@ -30,7 +30,7 @@
             />
           </td>
           <td>{{ t.email }}</td>
-          <EntityActions :entity="t" :getEntityList="getTenants"/>
+          <td><EntityActions :entity="t" :getEntityList="getTenants"/></td>
         </tr>
       </tbody>
     </table>
