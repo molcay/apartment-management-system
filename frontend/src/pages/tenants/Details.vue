@@ -106,7 +106,7 @@
       return {
         tenant: null,
         pageInfo: {
-          title: 'Mülk Sahipleri',
+          title: 'Kiracılar',
           buttons: [
             {
               text: 'Düzenle',
