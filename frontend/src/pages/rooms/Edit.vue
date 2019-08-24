@@ -91,7 +91,7 @@
             <div class="control">
               <button
                 class="button is-primary"
-                @click="saveLandlord"
+                @click="saveRoom"
               >
                 <span class="icon is-small">
                   <i class="fa fa-save" />
@@ -151,7 +151,7 @@ export default {
     getLandlords: () => {
       return api.getLandlords()
     },
-    saveLandlord: async function() {
+    saveRoom: async function() {
       const newRoom = {
         building_number: this.room.building_number,
         home_number: this.room.home_number,
