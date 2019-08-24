@@ -56,9 +56,11 @@
       this.getAgreements()
     },
     methods: {
-      getAgreements: () => {
-        return api.getAgreements()
-      }
+      getAgreements: async function () {
+        console.log("getAgreements were called")
+        const agreements = await api.getAgreements()
+        this.agreements = agreements
+      }      
     }
   }
 </script>

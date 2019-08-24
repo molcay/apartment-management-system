@@ -20,7 +20,10 @@
           <td>{{ r.building_number }} / {{ r.home_number }} - {{ r.room_number }}</td>
           <td>{{ r.size }}</td>
           <td>{{ r.landlord.title }}</td>
-          <EntityActions :entity="r" :getEntityList="getRooms"/>
+          <EntityActions
+            :entity="r"
+            :get-entity-list="getRooms"
+          />
         </tr>
       </tbody>
     </table>
