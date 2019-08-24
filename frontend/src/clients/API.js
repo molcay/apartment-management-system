@@ -138,11 +138,8 @@ class API {
     return API.put(`/rooms/${id}/`, newRoom)
   }
 
-  saveTenant() {
-    return API.post(``)
-      .then(response => response.data)
-      .catch(error => error)
-      .finally()
+  saveTenant(id, newTenant) {
+    return API.put(`/tenants/${id}/`, newTenant)
   }
 
   deleteAgreement() {

@@ -14,14 +14,19 @@
       <span class="icon is-smal"><i class="fas fa-edit" /></span>
       <span>Düzenle</span>
     </router-link>
-    <a href="#" v-on:click="deleteEntity()" class="button is-danger has-text-right">
-      <span class="icon is-small is-right"><i class="fa fa-minus-circle" /></span>
+    <a
+      href="#"
+      class="button is-danger is-small"
+      @:click="deleteEntity"
+    >
+      <span class="icon is-small"><i class="fa fa-minus-circle" /></span>
       <span>Sil</span>
     </a>
   </div>
 </template>
 
 <script>
+  import * as bulmaToast from 'bulma-toast'
   import {tr_to_ascii} from "../helper"
   import api from "../clients/API"
 
@@ -65,10 +70,25 @@
           if (resp.status === 204) {
             this.getEntityList()
           } else {
-            console.error(resp)
+            this.onError();
           }
+        }).catch((err) => {
+          console.error(err)
+          this.onError()
         })
       },
+      onError: function() {
+        bulmaToast.toast({
+          message: `Hata oluştu! Tekrar deneyiniz.`,
+          type: 'is-danger',
+          animate: {
+            in: 'fadeIn',
+            out: 'fadeOut',
+          },
+          position: "top-center",
+          closeOnClick: true,
+        })
+      }
     }
   }
 </script>

@@ -30,7 +30,12 @@
             />
           </td>
           <td>{{ t.email }}</td>
-          <td><EntityActions :entity="t" :getEntityList="getTenants"/></td>
+          <td>
+            <EntityActions
+              :entity="t"
+              :get-entity-list="getTenants"
+            />
+          </td>
         </tr>
       </tbody>
     </table>
@@ -38,7 +43,7 @@
 </template>
 
 <script>
-  import { TheMask } from 'vue-the-mask'
+  import {TheMask} from 'vue-the-mask'
   import api from '../../clients/API'
 
   export default {
@@ -67,9 +72,7 @@
     },
     methods: {
       getTenants: async function () {
-        console.log("getTenants called")
-        const tenants = await api.getTenants()
-        this.tenants = tenants
+        this.tenants = await api.getTenants()
       }
     }
   }

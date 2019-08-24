@@ -33,7 +33,10 @@
             </p>
           </td>
           <td>
-            <EntityActions :entity="l" :getEntityList="getLandlords"/>
+            <EntityActions
+              :entity="l"
+              :get-entity-list="getLandlords"
+            />
           </td>
         </tr>
       </tbody>
@@ -42,10 +45,10 @@
 </template>
 
 <script>
-import { TheMask } from "vue-the-mask"
-import api from "../../clients/API"
+  import {TheMask} from "vue-the-mask"
+  import api from "../../clients/API"
 
-export default {
+  export default {
   name: "LandlordList",
   components: {
     TheMask
@@ -71,9 +74,7 @@ export default {
   },
   methods: {
     getLandlords: async function () {
-      console.log("getLandlords called")
-      const landlords = await api.getLandlords()
-      this.landlords = landlords
+      this.landlords = await api.getLandlords()
     }
   }
 }

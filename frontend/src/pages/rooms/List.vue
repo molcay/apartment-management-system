@@ -56,9 +56,7 @@
     },
     methods: {
       getRooms: async function () {
-        console.log("getRooms called")
-        const rooms = await api.getRooms()
-        this.rooms = rooms
+        this.rooms = await api.getRooms()
       }
     }
   }
