@@ -1,5 +1,5 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-  <div>
+  <div v-if="tenant">
     <PageHeader
       :page-info="pageInfo"
     />
@@ -106,7 +106,7 @@
       return {
         tenant: null,
         pageInfo: {
-          title: 'Mülk Sahipleri',
+          title: 'Kiracılar',
           buttons: [
             {
               text: 'Düzenle',

@@ -9,7 +9,6 @@
         <tr>
           <th>Mülk Sahibi</th>
           <th>Banka</th>
-          <th>Adres</th>
           <th class="has-text-centered">
             Seçenekler
           </th>
@@ -33,8 +32,9 @@
               />
             </p>
           </td>
-          <td>{{ l.address }}</td>
-          <EntityActions :entity="l" :getEntityList="getLandlords"/>
+          <td>
+            <EntityActions :entity="l" :getEntityList="getLandlords"/>
+          </td>
         </tr>
       </tbody>
     </table>

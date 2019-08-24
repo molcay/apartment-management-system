@@ -8,8 +8,6 @@
           <th>T.C. Kimlik No.</th>
           <th>GSM</th>
           <th>E - Posta</th>
-          <th>Adresi</th>
-          <th>İş Adresi</th>
           <th class="has-text-centered">
             Seçenekler
           </th>
@@ -32,8 +30,6 @@
             />
           </td>
           <td>{{ t.email }}</td>
-          <td>{{ t.address }}</td>
-          <td>{{ t.work_address }}</td>
           <EntityActions :entity="t" :getEntityList="getTenants"/>
         </tr>
       </tbody>

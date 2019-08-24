@@ -7,8 +7,6 @@
           <th>Adı - Soyadı</th>
           <th>T.C. Kimlik No.</th>
           <th>GSM</th>
-          <th>Adresi</th>
-          <th>İş Adresi</th>
           <th class="has-text-centered">
             Seçenekler
           </th>
@@ -22,8 +20,6 @@
           <td>{{ g.first_name }} {{ g.last_name }}</td>
           <td>{{ g.tc }}</td>
           <td>{{ g.gsm }}</td>
-          <td>{{ g.address }}</td>
-          <td>{{ g.work_address }}</td>
           <EntityActions :entity="g" :getEntityList="getGuarantors"/>
         </tr>
       </tbody>

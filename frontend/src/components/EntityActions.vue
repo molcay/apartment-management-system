@@ -1,5 +1,5 @@
 <template>
-  <td class="is-flex">
+  <div class="is-flex">
     <router-link
       :to="`${$route.path}/${entity.id}/detay`"
       class="button is-link is-small"
@@ -18,7 +18,7 @@
       <span class="icon is-small"><i class="fa fa-minus-circle" /></span>
       <span>Sil</span>
     </a>
-  </td>
+  </div>
 </template>
 
 <script>
