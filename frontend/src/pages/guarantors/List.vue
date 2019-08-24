@@ -21,7 +21,7 @@
           <td>{{ g.tc }}</td>
           <td>
             <the-mask
-              class="span"
+              class="input"
               disabled="disabled"
               :mask="['0### ### ####']"
               :value="g.gsm"
