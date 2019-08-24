@@ -103,7 +103,7 @@
             <div class="control">
               <button 
                 class="button is-primary" 
-                :click="save()"
+                @click="save"
               >
                 <span class="icon is-small">
                   <i class="fa fa-save" />
@@ -120,6 +120,7 @@
 
 
 <script>
+import {tr_to_ascii} from "../../helper"
 import api from "../../clients/API"
 
 export default {
@@ -156,14 +157,18 @@ export default {
     getDetails: id => {
       return api.getLandlord(id)
     },
-    save(){
-      const newlandLord = {
+    save: async function () {
+      const newLandLord = {
         title: this.landlord.title,
         address: this.landlord.address,
         bank_info: this.landlord.bank_info,
         iban: this.landlord.iban,
       }
-      return api.saveLandlord(this.landlord.id, newlandLord)
+
+      const resp = await api.saveLandlord(this.landlord.id, newLandLord)
+      if (resp.status === 200) {
+        this.$router.push(tr_to_ascii("/mülk_sahipleri"))
+      }
     } 
   }
 }

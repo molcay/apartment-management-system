@@ -24,7 +24,10 @@
           <td>{{ a.tenant.first_name }} {{ a.tenant.last_name }}</td>
           <td>{{ a.start_date }}</td>
           <td>{{ a.end_date }}</td>
-          <EntityActions :entity="a" />
+          <EntityActions
+            :entity="a"
+            :get-entity-list="getAgreements"
+          />
         </tr>
       </tbody>
     </table>
@@ -57,9 +60,7 @@
     },
     methods: {
       getAgreements: async function () {
-        console.log("getAgreements were called")
-        const agreements = await api.getAgreements()
-        this.agreements = agreements
+        this.agreements = await api.getAgreements()
       }      
     }
   }

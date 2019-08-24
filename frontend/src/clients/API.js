@@ -128,16 +128,10 @@ class API {
 
   saveGuarantor(id, newGuarantor) {
     return API.put(`/guarantors/${id}/`, newGuarantor)
-      .then(response => response.data)
-      .catch(error => error)
-      .finally()
   }
 
   saveLandlord(id, newLandlord) {
     return API.put(`/landlords/${id}/`, newLandlord)
-      .then(response => response.data)
-      .catch(error => error)
-      .finally()
   }
 
   saveRoom(id, newRoom) {

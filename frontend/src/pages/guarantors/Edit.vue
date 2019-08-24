@@ -166,7 +166,7 @@
             <div class="control">
               <button 
                 class="button is-primary" 
-                :click="save()"
+                @click="save"
               >
                 <span class="icon is-small">
                   <i class="fa fa-save" />
@@ -206,7 +206,8 @@ export default {
             path_suffix: `${this.$route.path.replace("duzenle", "sil")}`
           }
         ]
-      }
+      },
+      errors: {},
     }
   },
   mounted() {
@@ -218,9 +219,8 @@ export default {
     getDetails: id => {
       return api.getGuarantor(id)
     },
-    save(){
+    save: async function() {
       const newGuarantor = {
-
         first_name:this.guarantor.first_name,
         last_name: this.guarantor.last_name,
         tc : this.guarantor.tc,
@@ -228,8 +228,12 @@ export default {
         address: this.guarantor.address,
         work_address: this.guarantor.work_address
       }
-      return api.saveGuarantor(this.guarantor.id, newGuarantor)
-    } 
+
+      const resp = await api.saveGuarantor(this.guarantor.id, newGuarantor)
+      if (resp.status === 200) {
+        this.$router.push("/kefiller")
+      }
+    }
   }
 }
 </script>

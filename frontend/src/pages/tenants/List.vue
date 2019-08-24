@@ -8,8 +8,6 @@
           <th>T.C. Kimlik No.</th>
           <th>GSM</th>
           <th>E - Posta</th>
-          <th>Adresi</th>
-          <th>İş Adresi</th>
           <th class="has-text-centered">
             Seçenekler
           </th>
@@ -32,8 +30,6 @@
             />
           </td>
           <td>{{ t.email }}</td>
-          <td>{{ t.address }}</td>
-          <td>{{ t.work_address }}</td>
           <EntityActions
             :entity="t"
             :get-entity-list="getTenants"
@@ -45,7 +41,7 @@
 </template>
 
 <script>
-  import { TheMask } from 'vue-the-mask'
+  import {TheMask} from 'vue-the-mask'
   import api from '../../clients/API'
 
   export default {
@@ -74,9 +70,7 @@
     },
     methods: {
       getTenants: async function () {
-        console.log("getTenants called")
-        const tenants = await api.getTenants()
-        this.tenants = tenants
+        this.tenants = await api.getTenants()
       }
     }
   }
