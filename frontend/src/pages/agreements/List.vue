@@ -53,9 +53,7 @@
       }
     },
     mounted() {
-      this.getAgreements().then(agreements => {
-        this.agreements = agreements
-      })
+      this.getAgreements()
     },
     methods: {
       getAgreements: () => {

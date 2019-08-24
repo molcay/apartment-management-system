@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="landlord.length"
+    v-if="landlords.length"
     class="container"
   >
     <PageHeader :page-info="pageInfo" />
@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="l in landlord"
+          v-for="l in landlords"
           :key="l.id"
         >
           <td>{{ l.title }}</td>
@@ -34,7 +34,7 @@
             </p>
           </td>
           <td>{{ l.address }}</td>
-          <EntityActions :entity="l" />
+          <EntityActions :entity="l" :getEntityList="getLandlords"/>
         </tr>
       </tbody>
     </table>
@@ -63,17 +63,17 @@ export default {
           }
         ]
       },
-      landlord: []
+      landlords: []
     }
   },
   mounted() {
-    this.getLandlords().then(landlord => {
-      this.landlord = landlord
-    })
+    this.getLandlords()
   },
   methods: {
-    getLandlords: () => {
-      return api.getLandlords()
+    getLandlords: async function () {
+      console.log("getLandlords called")
+      const landlords = await api.getLandlords()
+      this.landlords = landlords
     }
   }
 }

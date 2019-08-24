@@ -91,6 +91,14 @@ const router = new VueRouter({
       component: LandlordList,
     },
     {
+      path: '/odalar/ekle',
+      component: CreateRoom,
+    },
+    {
+      path: ('/odalar/:id/detay'),
+      component: DetailedRoom,
+    },
+    {
       path: tr_to_ascii('/mülk_sahipleri/ekle'),
       component: CreateLandlord,
     },
@@ -102,6 +110,27 @@ const router = new VueRouter({
       path: tr_to_ascii('/mülk_sahipleri/:id/düzenle'),
       component: EditedLandlord,
     },
+    {
+      path: tr_to_ascii('/kiracılar/ekle'),
+      component: CreateTenant,
+    },
+    {
+      path: tr_to_ascii('/kiracılar/:id/detay'),
+      component: DetailedTenant,
+    },
+    {
+      path: '/kefiller/ekle',
+      component: CreateGuarantor,
+    },
+    {
+      path: tr_to_ascii('/sözleşmeler/ekle'),
+      component: CreateAgreement,
+    },
+    {
+      path: tr_to_ascii('/sözleşmeler/:id/detay'),
+      component: DetailedAgreement,
+    },
+
   ]
 })
 

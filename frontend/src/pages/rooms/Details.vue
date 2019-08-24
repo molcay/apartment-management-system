@@ -70,7 +70,7 @@
 
 
 <script>
-import api from "../../clients/API"
+  import api from "../../clients/API"
 
 export default {
   name: "DetailedRoom",

@@ -11,15 +11,18 @@ class TenantListView(generics.ListAPIView):
     queryset = Tenant.objects.all()
     serializer_class = TenantSerializer
 
-class TenantRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+
+class TenantRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tenant.objects.all()
     serializer_class = TenantSerializer
+
 
 class GuarantorListView(generics.ListAPIView):
     queryset = Guarantor.objects.all()
     serializer_class = GuarantorSerializer
 
-class GuarantorRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+
+class GuarantorRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Guarantor.objects.all()
     serializer_class = GuarantorSerializer
 
@@ -28,25 +31,30 @@ class LandlordListView(generics.ListAPIView):
     queryset = Landlord.objects.all()
     serializer_class = LandlordSerializer
 
-class LandlordRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+
+class LandlordRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Landlord.objects.all()
     serializer_class = LandlordSerializer
+
 
 class RoomListView(generics.ListAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
-class RoomRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+
+class RoomRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Room.objects.all()
-    #serializer_class = RoomUpdateSerializer
+    # serializer_class = RoomSerializer
 
     def get_serializer_class(self):
         if self.request.method == 'PUT':
-            return RoomUpdateSerializer 
-        return RoomSerializer 
+            return RoomUpdateSerializer
+        return RoomSerializer
+
 
 class BaseViewSet(viewsets.ModelViewSet):    # TODO: add permissions here
     pass
+
 
 class AgreementViewSet(BaseViewSet):
     queryset = Agreement.objects.all()

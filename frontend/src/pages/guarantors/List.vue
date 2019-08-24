@@ -24,7 +24,7 @@
           <td>{{ g.gsm }}</td>
           <td>{{ g.address }}</td>
           <td>{{ g.work_address }}</td>
-          <EntityActions :entity="g" />
+          <EntityActions :entity="g" :getEntityList="getGuarantors"/>
         </tr>
       </tbody>
     </table>
@@ -53,13 +53,14 @@
       }
     },
     mounted() {
-      this.getGuarantors().then(guarantors => {
-        this.guarantors = guarantors
-      })
+      this.getGuarantors()
     },
     methods: {
-      getGuarantors: () => {
-        return api.getGuarantors()
+      getGuarantors: async function () {
+        console.log("getGuarantors called")
+        const guarantors = await api.getGuarantors()
+        this.guarantors = guarantors
+        
       }
     }
   }

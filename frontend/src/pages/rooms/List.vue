@@ -20,7 +20,7 @@
           <td>{{ r.building_number }} / {{ r.home_number }} - {{ r.room_number }}</td>
           <td>{{ r.size }}</td>
           <td>{{ r.landlord.title }}</td>
-          <EntityActions :entity="r" />
+          <EntityActions :entity="r" :getEntityList="getRooms"/>
         </tr>
       </tbody>
     </table>
@@ -49,13 +49,13 @@
       }
     },
     mounted() {
-      this.getRooms().then(rooms => {
-        this.rooms = rooms
-      })
+      this.getRooms()
     },
     methods: {
-      getRooms: () => {
-        return api.getRooms()
+      getRooms: async function () {
+        console.log("getRooms called")
+        const rooms = await api.getRooms()
+        this.rooms = rooms
       }
     }
   }

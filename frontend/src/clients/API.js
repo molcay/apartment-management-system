@@ -88,48 +88,56 @@ class API {
     return API.get(`/agreements/${id}/`)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   getGuarantor(id) {
     return API.get(`/guarantors/${id}/`)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   getLandlord(id) {
     return API.get(`/landlords/${id}/`)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   getRoom(id) {
     return API.get(`/rooms/${id}/`)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   getTenant(id) {
     return API.get(`/tenants/${id}/`)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   saveAgreement() {
     return API.post(``)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   saveGuarantor(id, newGuarantor) {
     return API.put(`/guarantors/${id}/`, newGuarantor)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   saveLandlord(id, newLandlord) {
     return API.put(`/landlords/${id}/`, newLandlord)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   saveRoom(id, newRoom) {
@@ -140,36 +148,27 @@ class API {
     return API.post(``)
       .then(response => response.data)
       .catch(error => error)
+      .finally()
   }
 
   deleteAgreement() {
     return API.delete(``)
-      .then(response => response.data)
-      .catch(error => error)
   }
 
-  deleteGuarantor() {
-    return API.delete(``)
-      .then(response => response.data)
-      .catch(error => error)
+  deleteGuarantor(id) {
+    return API.delete(`/guarantors/${id}/`)
   }
 
   deleteLandlord(id) {
-    return API.delete(`/tenants/${id}/`)
-      .then(response => response.data)
-      .catch(error => error)
+    return API.delete(`/landlords/${id}/`)
   }
 
-  deleteRoom() {
-    return API.delete(``)
-      .then(response => response.data)
-      .catch(error => error)
+  deleteRoom(id) {
+    return API.delete(`/rooms/${id}/`)
   }
 
-  deleteTenant() {
-    return API.delete(``)
-      .then(response => response.data)
-      .catch(error => error)
+  deleteTenant(id) {
+    return API.delete(`/tenants/${id}`)
   }
 }
 
