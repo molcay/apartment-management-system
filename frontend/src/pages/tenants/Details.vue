@@ -42,7 +42,7 @@
       </template>
     </FormInput>
 
-       <FormInput>
+    <FormInput>
       <template v-slot:labelElement>
         <label class="label">İş Adres</label>
       </template>

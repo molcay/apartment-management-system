@@ -111,7 +111,7 @@
                 :value="guarantor.id"
               >
                 {{ guarantor.first_name }}
-                {{ guarantor.last_name}}
+                {{ guarantor.last_name }}
               </option>
             </select>
           </div>

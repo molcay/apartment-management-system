@@ -12,6 +12,3 @@ djangorestframework = "*"
 django-webpack-loader = "*"
 django-environ = "*"
 docxtpl = "*"
-
-[requires]
-python_version = "3.6"

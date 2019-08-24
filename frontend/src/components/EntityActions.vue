@@ -40,35 +40,32 @@
     methods: {
       tr_to_ascii,
       deleteEntity() {
-        console.log("Called DELETE")
-        console.log(this.$route.path)
-        console.log(this.entity.id)
-        let deleteFun; 
+        let deleteFun
         switch(this.$route.path) {
           case tr_to_ascii('/mülk_sahipleri'):
-            deleteFun = api.deleteLandlord;
-            break;
+            deleteFun = api.deleteLandlord
+            break
           case tr_to_ascii('/kiracılar'):
-            deleteFun = api.deleteTenant;
-            break;
+            deleteFun = api.deleteTenant
+            break
           case tr_to_ascii('/odalar'):
-            deleteFun = api.deleteRoom;
-            break;
+            deleteFun = api.deleteRoom
+            break
           case tr_to_ascii('/kefiller'):
-            deleteFun = api.deleteGuarantor;
-            break;
+            deleteFun = api.deleteGuarantor
+            break
           case tr_to_ascii('/sözleşmeler'):
-            deleteFun = api.deleteAgreement;
-            break;
+            deleteFun = api.deleteAgreement
+            break
           default:
-            break;
+            break
         }
 
         deleteFun(this.entity.id).then((resp) => {
           if (resp.status === 204) {
-          this.getEntityList()
+            this.getEntityList()
           } else {
-            console.log(resp)
+            console.error(resp)
           }
         })
       },
