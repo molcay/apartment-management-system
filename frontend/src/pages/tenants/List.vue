@@ -34,7 +34,10 @@
           <td>{{ t.email }}</td>
           <td>{{ t.address }}</td>
           <td>{{ t.work_address }}</td>
-          <EntityActions :entity="t" :getEntityList="getTenants"/>
+          <EntityActions
+            :entity="t"
+            :get-entity-list="getTenants"
+          />
         </tr>
       </tbody>
     </table>
