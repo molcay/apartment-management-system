@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="landlord.length"
+    v-if="landlords.length"
     class="container"
   >
     <PageHeader :page-info="pageInfo" />
@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="l in landlord"
+          v-for="l in landlords"
           :key="l.id"
         >
           <td>{{ l.title }}</td>
@@ -34,7 +34,7 @@
             </p>
           </td>
           <td>{{ l.address }}</td>
-          <EntityActions :entity="l" />
+          <EntityActions :entity="l" :getEntityList="getLandlords"/>
         </tr>
       </tbody>
     </table>
@@ -42,35 +42,39 @@
 </template>
 
 <script>
-  import { TheMask } from 'vue-the-mask'
-  import api from '../../clients/API'
+import { TheMask } from "vue-the-mask"
+import api from "../../clients/API"
 
-  export default {
-    name: 'LandlordList',
-    components: {
-      TheMask,
-    },
-    data() {
-      return {
-        pageInfo: {
-          title: 'Mülk Sahipleri',
-          button: {
-            text: 'Yeni Mülk Sahibi',
-            path_suffix: '/ekle',
+export default {
+  name: "LandlordList",
+  components: {
+    TheMask
+  },
+  data() {
+    return {
+      pageInfo: {
+        title: "Mülk Sahipleri",
+        buttons: [
+          {
+            text: "Yeni Mülk Sahibi",
+            icon: "fa fa-plus-circle",
+            color: "is-success",
+            path_suffix: `${this.$route.path}/ekle`
           }
-        },
-        landlord: [],
-      }
-    },
-    mounted() {
-      this.getLandlords().then(landlord => {
-        this.landlord = landlord
-      })
-    },
-    methods: {
-      getLandlords: () => {
-        return api.getLandlords()
-      }
+        ]
+      },
+      landlords: []
+    }
+  },
+  mounted() {
+    this.getLandlords()
+  },
+  methods: {
+    getLandlords: async function () {
+      console.log("getLandlords called")
+      const landlords = await api.getLandlords()
+      this.landlords = landlords
     }
   }
+}
 </script>

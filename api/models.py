@@ -50,7 +50,7 @@ class Room(models.Model):
     home_number = models.CharField('Ev Numarası', max_length=5)  # 1,2,3, 13Ç
     room_number = models.CharField('Oda Numarası', max_length=5)  # A, B, C
     size = models.FloatField('Boyut')  # 12.80 m2 room
-    landlord = models.ForeignKey(Landlord, on_delete=models.DO_NOTHING)
+    landlord = models.ForeignKey(Landlord, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Oda'
@@ -65,9 +65,9 @@ class Room(models.Model):
 
 
 class Agreement(models.Model):
-    room = models.ForeignKey(Room, on_delete=models.DO_NOTHING)
-    tenant = models.ForeignKey(Tenant, on_delete=models.DO_NOTHING)
-    guarantor = models.ForeignKey(Guarantor, on_delete=models.DO_NOTHING, null=True, blank=True)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
+    guarantor = models.ForeignKey(Guarantor, on_delete=models.CASCADE, null=True, blank=True)
     start_date = models.DateField('Kira Başlangıç Tarihi')
     end_date = models.DateField('Kira Bitiş Tarihi')
     lease_price = models.FloatField('Kira Bedeli')  # Kira Bedeli

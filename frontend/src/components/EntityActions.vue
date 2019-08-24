@@ -14,18 +14,16 @@
       <span class="icon is-small"><i class="fas fa-edit" /></span>
       <span>Düzenle</span>
     </router-link>
-    <router-link
-      :to="`${$route.path}/${entity.id}/sil`"
-      class="button is-danger is-small"
-    >
+    <a href="#" v-on:click="deleteEntity()" class="button is-danger is-small">
       <span class="icon is-small"><i class="fa fa-minus-circle" /></span>
       <span>Sil</span>
-    </router-link>
+    </a>
   </td>
 </template>
 
 <script>
   import {tr_to_ascii} from "../helper"
+  import api from "../clients/API"
 
   export default {
     name: 'EntityActions',
@@ -33,10 +31,47 @@
       entity: {
         type: Object,
         required: true,
-      }
+      },
+      getEntityList: {
+        type: Function,
+        required: true,
+      },
     },
     methods: {
       tr_to_ascii,
+      deleteEntity() {
+        console.log("Called DELETE")
+        console.log(this.$route.path)
+        console.log(this.entity.id)
+        let deleteFun; 
+        switch(this.$route.path) {
+          case tr_to_ascii('/mülk_sahipleri'):
+            deleteFun = api.deleteLandlord;
+            break;
+          case tr_to_ascii('/kiracılar'):
+            deleteFun = api.deleteTenant;
+            break;
+          case tr_to_ascii('/odalar'):
+            deleteFun = api.deleteRoom;
+            break;
+          case tr_to_ascii('/kefiller'):
+            deleteFun = api.deleteGuarantor;
+            break;
+          case tr_to_ascii('/sözleşmeler'):
+            deleteFun = api.deleteAgreement;
+            break;
+          default:
+            break;
+        }
+
+        deleteFun(this.entity.id).then((resp) => {
+          if (resp.status === 204) {
+          this.getEntityList()
+          } else {
+            console.log(resp)
+          }
+        })
+      },
     }
   }
 </script>
