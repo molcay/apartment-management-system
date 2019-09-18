@@ -17,7 +17,7 @@ class TenantRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TenantSerializer
 
 
-class GuarantorListView(generics.ListAPIView):
+class GuarantorListCreateView(generics.ListAPIView):
     queryset = Guarantor.objects.all()
     serializer_class = GuarantorSerializer
 
@@ -37,10 +37,23 @@ class LandlordRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = LandlordSerializer
 
 
-class RoomListView(generics.ListAPIView):
+class RoomListCreateView(generics.ListCreateAPIView):
     queryset = Room.objects.all()
-    serializer_class = RoomSerializer
+    # serializer_class = RoomSerializer
 
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return RoomUpdateSerializer
+        return RoomSerializer
+
+class GuarantorListCreateView(generics.ListCreateAPIView):
+    queryset = Guarantor.objects.all()
+    # serializer_class = RoomSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return GuarantorSerializer
+        return GuarantorSerializer
 
 class RoomRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Room.objects.all()

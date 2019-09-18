@@ -161,6 +161,14 @@ class API {
   deleteTenant(id) {
     return API.delete(`/tenants/${id}`)
   }
+
+  createRoom(newRooms) {
+    return API.post(`/rooms/`, newRooms)
+  }
+
+  createGuarantor(newGuarantors) {
+    return API.post(`/guarantors/`, newGuarantors)
+  }
 }
 
 const api = new API()
