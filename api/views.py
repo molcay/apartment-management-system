@@ -27,7 +27,7 @@ class GuarantorRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = GuarantorSerializer
 
 
-class LandlordListView(generics.ListAPIView):
+class LandlordListCreateView(generics.ListCreateAPIView):
     queryset = Landlord.objects.all()
     serializer_class = LandlordSerializer
 
