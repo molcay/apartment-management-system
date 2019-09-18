@@ -39,7 +39,7 @@ const router = new VueRouter({
       component: CreateRoom,
     },
     {
-      path: ('/odalar/:id/detay'),
+      path: '/odalar/:id/detay',
       component: DetailedRoom,
     },
     {
@@ -74,17 +74,21 @@ const router = new VueRouter({
       path: tr_to_ascii('/sözleşmeler/:id/detay'),
       component: DetailedAgreement,
     },
+    /*{
+      path: tr_to_ascii('/sözleşmeler/:id/duzenle'),
+      component: DetailedAgreement,
+    },*/
     {
       path: '/kefiller',
       component: GuarantorList,
     },
     {
-      path: '/kefiller/:id/detay',
-      component: DetailedGuarantor,
-    },
-    {
       path: '/kefiller/ekle',
       component: CreateGuarantor,
+    },
+    {
+      path: '/kefiller/:id/detay',
+      component: DetailedGuarantor,
     },
     {
       path: tr_to_ascii('/kefiller/:id/düzenle'),
@@ -93,14 +97,6 @@ const router = new VueRouter({
     {
       path: tr_to_ascii('/mülk_sahipleri'),
       component: LandlordList,
-    },
-    {
-      path: '/odalar/ekle',
-      component: CreateRoom,
-    },
-    {
-      path: ('/odalar/:id/detay'),
-      component: DetailedRoom,
     },
     {
       path: tr_to_ascii('/mülk_sahipleri/ekle'),
@@ -114,27 +110,6 @@ const router = new VueRouter({
       path: tr_to_ascii('/mülk_sahipleri/:id/düzenle'),
       component: EditedLandlord,
     },
-    {
-      path: tr_to_ascii('/kiracılar/ekle'),
-      component: CreateTenant,
-    },
-    {
-      path: tr_to_ascii('/kiracılar/:id/detay'),
-      component: DetailedTenant,
-    },
-    {
-      path: '/kefiller/ekle',
-      component: CreateGuarantor,
-    },
-    {
-      path: tr_to_ascii('/sözleşmeler/ekle'),
-      component: CreateAgreement,
-    },
-    {
-      path: tr_to_ascii('/sözleşmeler/:id/detay'),
-      component: DetailedAgreement,
-    },
-
   ]
 })
 

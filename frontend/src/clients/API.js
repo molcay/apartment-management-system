@@ -161,6 +161,10 @@ class API {
   deleteTenant(id) {
     return API.delete(`/tenants/${id}`)
   }
+
+  createTenant(newTenant) {
+    return API.post('/tenants/', newTenant)
+  }
 }
 
 const api = new API()

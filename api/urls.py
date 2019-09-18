@@ -8,7 +8,7 @@ router = routers.DefaultRouter()
 router.register('agreements', views.AgreementViewSet, 'agreements')
 
 urlpatterns = [
-    path('tenants/', views.TenantListView.as_view(), name='tenants'),
+    path('tenants/', views.TenantListCreateView.as_view(), name='tenants'),
     path('tenants/<int:pk>/', views.TenantRetrieveUpdateDestroyView.as_view(), name='tenant_actions'),
     path('guarantors/', views.GuarantorListView.as_view(), name='guarantors'),
     path('guarantors/<int:pk>/', views.GuarantorRetrieveUpdateDestroyView.as_view(), name='guarantor_actions'),
