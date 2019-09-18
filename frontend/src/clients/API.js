@@ -169,6 +169,15 @@ class API {
   createGuarantor(newGuarantors) {
     return API.post(`/guarantors/`, newGuarantors)
   }
+  
+  createTenant(newTenant) {
+    return API.post('/tenants/', newTenant)
+  }
+
+  createLandlord(newLandlord) {
+    return API.post(`/landlords/`, newLandlord)
+  }
+
 }
 
 const api = new API()

@@ -7,7 +7,7 @@ from api.serializers import TenantSerializer, GuarantorSerializer, LandlordSeria
     AgreementSerializer, RoomUpdateSerializer
 
 
-class TenantListView(generics.ListAPIView):
+class TenantListCreateView(generics.ListCreateAPIView):
     queryset = Tenant.objects.all()
     serializer_class = TenantSerializer
 
@@ -27,7 +27,7 @@ class GuarantorRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = GuarantorSerializer
 
 
-class LandlordListView(generics.ListAPIView):
+class LandlordListCreateView(generics.ListCreateAPIView):
     queryset = Landlord.objects.all()
     serializer_class = LandlordSerializer
 
