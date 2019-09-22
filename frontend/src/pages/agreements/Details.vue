@@ -23,7 +23,7 @@
       <template v-slot:inputElement>
         <div class="select">
           <select disabled>
-            <option>{{ agreement.tenant.first_name }} {{ agreement.tenant.last_name }}</option>
+            <option>{{ agreement.tenant.first_name }} {{ agreement.tenant.last_name }}({{ agreement.tenant.tc }})</option>
           </select>
         </div>
       </template>
@@ -36,7 +36,7 @@
       <template v-slot:inputElement>
         <div class="select">
           <select disabled>
-            <option>{{ agreement.guarantor.first_name }} {{ agreement.guarantor.last_name }}</option>
+            <option>{{ agreement.guarantor.first_name }} {{ agreement.guarantor.last_name }}({{ agreement.tenant.tc }})</option>
           </select>
         </div>
       </template>

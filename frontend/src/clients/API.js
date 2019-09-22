@@ -119,11 +119,8 @@ class API {
       .finally()
   }
 
-  saveAgreement() {
-    return API.post(``)
-      .then(response => response.data)
-      .catch(error => error)
-      .finally()
+  saveAgreement(id,newAgreement) {
+    return API.put(`/agreements/${id}/`, newAgreement)
   }
 
   saveGuarantor(id, newGuarantor) {
@@ -176,8 +173,7 @@ class API {
 
   createLandlord(newLandlord) {
     return API.post(`/landlords/`, newLandlord)
-  }
-
+  }  
 }
 
 const api = new API()
