@@ -74,7 +74,7 @@ class AgreementViewSet(BaseViewSet):
     #serializer_class = AgreementSerializer
 
     def get_serializer_class(self):
-        if self.request.method == 'PUT':
+        if self.request.method == 'PUT' or self.request.method == 'POST':
             return AgreementUpdateSerializer
         return AgreementSerializer
 

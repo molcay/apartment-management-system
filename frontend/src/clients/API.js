@@ -173,7 +173,11 @@ class API {
 
   createLandlord(newLandlord) {
     return API.post(`/landlords/`, newLandlord)
-  }  
+  }
+  
+  createAgreement(newAgreement) {
+    return API.post(`/agreements/`, newAgreement)
+  } 
 }
 
 const api = new API()
