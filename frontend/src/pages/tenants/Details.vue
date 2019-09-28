@@ -114,12 +114,6 @@
               color: 'is-warning',
               path_suffix: `${this.$route.path.replace("detay","duzenle",)}`,
             },
-            {
-              text: 'Sil',
-              icon: 'fa fa-minus-circle',
-              color: 'is-danger',
-              path_suffix: `${this.$route.path.replace("detay","sil")}`,
-            },
           ],
         },
       }
