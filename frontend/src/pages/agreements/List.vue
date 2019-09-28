@@ -1,7 +1,7 @@
 <template>
-  <div v-if="agreements.length">
+  <div>
     <PageHeader :page-info="pageInfo" />
-    <table class="table is-striped is-hoverable is-fullwidth">
+    <table v-if="agreements.length" class="table is-striped is-hoverable is-fullwidth">
       <thead>
         <tr>
           <th>#</th>
