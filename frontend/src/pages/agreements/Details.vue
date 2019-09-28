@@ -8,7 +8,9 @@
         <label class="label">Oda</label>
       </template>
       <template v-slot:inputElement>
-        {{ agreement.room.building_number }} / {{ agreement.room.home_number }} - {{ agreement.room.room_number }}
+        <div class="input"> 
+          {{ agreement.room.building_number }} / {{ agreement.room.home_number }} - {{ agreement.room.room_number }}
+        </div>
       </template>
     </FormInput>
 
@@ -17,7 +19,9 @@
         <label class="label">Kiracı</label>
       </template>
       <template v-slot:inputElement>
-        {{ agreement.tenant.first_name }} {{ agreement.tenant.last_name }}({{ agreement.tenant.tc }})
+        <div class="input">
+          {{ agreement.tenant.first_name }} {{ agreement.tenant.last_name }}({{ agreement.tenant.tc }})
+        </div>
       </template>
     </FormInput>
 
@@ -26,7 +30,9 @@
         <label class="label">Kefil</label>
       </template>
       <template v-slot:inputElement>
-        {{ agreement.guarantor.first_name }} {{ agreement.guarantor.last_name }}({{ agreement.tenant.tc }})
+        <div class="input">
+          {{ agreement.guarantor.first_name }} {{ agreement.guarantor.last_name }}({{ agreement.tenant.tc }})
+        </div>
       </template>
     </FormInput>
 
@@ -35,7 +41,9 @@
         <label class="label">Kira Başlangıç Tarihi</label>
       </template>
       <template v-slot:inputElement>
-        {{ agreement.start_date }}
+        <div class="input">
+          {{ agreement.start_date }}
+        </div>
       </template>
     </FormInput>
 
@@ -44,7 +52,9 @@
         <label class="label">Kira Bitiş Tarihi</label>
       </template>
       <template v-slot:inputElement>
-        {{ agreement.end_date }}
+        <div class="input">
+          {{ agreement.end_date }}
+        </div>
       </template>
     </FormInput>
 
@@ -53,7 +63,9 @@
         <label class="label">Kira Bedeli</label>
       </template>
       <template v-slot:inputElement>
-        {{ agreement.lease_price }}
+        <div class="input">
+          {{ agreement.lease_price }}
+        </div>
       </template>
     </FormInput>
 
@@ -62,7 +74,9 @@
         <label class="label">Aidat Bedeli</label>
       </template>
       <template v-slot:inputElement>
-        {{ agreement.dues }}
+        <div class="input">
+          {{ agreement.dues }}
+        </div>
       </template>
     </FormInput>
   </div>
@@ -90,12 +104,6 @@
               icon: 'fas fa-edit',
               color: 'is-warning',
               path_suffix: `${this.$route.path.replace("detay","duzenle",)}`,
-            },
-            {
-              text: 'Sil',
-              icon: 'fa fa-minus-circle',
-              color: 'is-danger',
-              path_suffix: `${this.$route.path.replace("detay","sil")}`,
             },
           ],
         },

@@ -125,12 +125,6 @@ export default {
             color: "is-link",
             path_suffix: `${this.$route.path.replace("duzenle", "detay")}`
           },
-          {
-            text: "Sil",
-            icon: "fa fa-minus-circle",
-            color: "is-danger",
-            path_suffix: `${this.$route.path.replace("duzenle", "sil")}`
-          }
         ]
       },
       errors: {}

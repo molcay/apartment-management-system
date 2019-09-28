@@ -13,10 +13,8 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option> {{ guarantor.first_name }} </option>
-          </select>
+        <div class="input">
+          {{ guarantor.first_name }}
         </div>
       </template>
     </FormInput>
@@ -31,10 +29,8 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option> {{ guarantor.last_name }} </option>
-          </select>
+        <div class="input">
+          {{ guarantor.last_name }}
         </div>
       </template>
     </FormInput>
@@ -49,10 +45,8 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option> {{ guarantor.tc }} </option>
-          </select>
+        <div class="input">
+          {{ guarantor.tc }}
         </div>
       </template>
     </FormInput>
@@ -67,10 +61,8 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option> {{ guarantor.gsm }} </option>
-          </select>
+        <div class="input">
+          {{ guarantor.gsm }}
         </div>
       </template>
     </FormInput>
@@ -85,10 +77,8 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option> {{ guarantor.address }} </option>
-          </select>
+        <div class="input">
+          {{ guarantor.address }}
         </div>
       </template>
     </FormInput>
@@ -103,10 +93,8 @@
         </label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option> {{ guarantor.work_address }} </option>
-          </select>
+        <div class="input">
+          {{ guarantor.work_address }}
         </div>
       </template>
     </FormInput>
@@ -129,12 +117,7 @@
               text: 'Düzenle',
               icon: 'fas fa-edit',
               color: 'is-warning',
-              path_suffix: `${this.$route.path.replace("detay","duzenle",)}`            },
-            {
-              text: 'Sil',
-              icon: 'fa fa-minus-circle',
-              color: 'is-danger',
-             path_suffix: `${this.$route.path.replace("detay","sil")}`
+              path_suffix: `${this.$route.path.replace("detay","duzenle",)}`
             },
           ],
         },
