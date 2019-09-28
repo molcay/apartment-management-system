@@ -17,7 +17,7 @@
     <a
       href="#"
       class="button is-danger"
-      @:click="deleteEntity"
+      @click="deleteEntity"
     >
       <span class="icon is-small"><i class="fa fa-minus-circle" /></span>
       <span>Sil</span>
@@ -65,7 +65,6 @@
           default:
             break
         }
-
         deleteFun(this.entity.id).then((resp) => {
           if (resp.status === 204) {
             this.getEntityList()
