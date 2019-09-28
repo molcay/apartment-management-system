@@ -192,10 +192,10 @@ export default {
   data() {
     return {
       agreement: {},
+      errors: {},
       rooms: [],
       tenants: [],
       guarantors: [],
-      errors: {},
       pageInfo: {
         title: "Sözleşme Detayları",
         buttons: [

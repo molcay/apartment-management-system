@@ -19,14 +19,6 @@
           </select>
         </div>
       </template>
-      <template v-slot:helperText>
-        <p
-          v-if="errors && errors.first_name"
-          class="help is-danger"
-        >
-          {{ errors.first_name[0] }}
-        </p>
-      </template>
     </FormInput>
 
     <FormInput>
@@ -44,14 +36,6 @@
             <option> {{ guarantor.last_name }} </option>
           </select>
         </div>
-      </template>
-      <template v-slot:helperText>
-        <p
-          v-if="errors && errors.last_name"
-          class="help is-danger"
-        >
-          {{ errors.last_name[0] }}
-        </p>
       </template>
     </FormInput>
 
@@ -71,14 +55,6 @@
           </select>
         </div>
       </template>
-      <template v-slot:helperText>
-        <p
-          v-if="errors && errors.tc"
-          class="help is-danger"
-        >
-          {{ errors.tc[0] }}
-        </p>
-      </template>
     </FormInput>
 
     <FormInput>
@@ -96,14 +72,6 @@
             <option> {{ guarantor.gsm }} </option>
           </select>
         </div>
-      </template>
-      <template v-slot:helperText>
-        <p
-          v-if="errors && errors.gsm"
-          class="help is-danger"
-        >
-          {{ errors.gsm[0] }}
-        </p>
       </template>
     </FormInput>
 
@@ -123,14 +91,6 @@
           </select>
         </div>
       </template>
-      <template v-slot:helperText>
-        <p
-          v-if="errors && errors.address"
-          class="help is-danger"
-        >
-          {{ errors.address[0] }}
-        </p>
-      </template>
     </FormInput>
 
     <FormInput>
@@ -149,14 +109,6 @@
           </select>
         </div>
       </template>
-      <template v-slot:helperText>
-        <p
-          v-if="errors && errors.work_address"
-          class="help is-danger"
-        >
-          {{ errors.work_address[0] }}
-        </p>
-      </template>
     </FormInput>
   </div>
 </template>
@@ -169,7 +121,7 @@
     name: 'DetailedGuarantor',
     data() {
       return {
-        guarantor: null,
+        guarantor: {},
         pageInfo: {
           title: 'Kefil Detayı',
           buttons: [
