@@ -190,10 +190,10 @@ export default {
   data() {
     return {
       guarantor: {},
+      errors: {},
       pageInfo: {
         title: "Kefiller",
       },
-      errors: {},
     }
   },
   mounted() {

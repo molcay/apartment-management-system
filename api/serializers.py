@@ -31,11 +31,14 @@ class RoomSerializer(RoomUpdateSerializer):
     landlord = LandlordSerializer()
 
 
-class AgreementSerializer(serializers.ModelSerializer):
-    room = RoomSerializer()
-    tenant = TenantSerializer()
-    guarantor = GuarantorSerializer()
+class AgreementUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Agreement
         fields = '__all__'
+
+class AgreementSerializer(AgreementUpdateSerializer):
+    room = RoomSerializer()
+    tenant = TenantSerializer()
+    guarantor = GuarantorSerializer()
+    

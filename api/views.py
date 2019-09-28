@@ -4,7 +4,7 @@ from rest_framework import generics, viewsets
 from api.doc_manager.manager import DocManager
 from api.models import Tenant, Guarantor, Landlord, Room, Agreement, AgreementFile
 from api.serializers import TenantSerializer, GuarantorSerializer, LandlordSerializer, RoomSerializer, \
-    AgreementSerializer, RoomUpdateSerializer
+    AgreementSerializer, RoomUpdateSerializer, AgreementUpdateSerializer
 
 
 class TenantListCreateView(generics.ListCreateAPIView):
@@ -17,7 +17,7 @@ class TenantRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TenantSerializer
 
 
-class GuarantorListCreateView(generics.ListAPIView):
+class GuarantorListCreateView(generics.ListCreateAPIView):
     queryset = Guarantor.objects.all()
     serializer_class = GuarantorSerializer
 
@@ -71,7 +71,12 @@ class BaseViewSet(viewsets.ModelViewSet):    # TODO: add permissions here
 
 class AgreementViewSet(BaseViewSet):
     queryset = Agreement.objects.all()
-    serializer_class = AgreementSerializer
+    #serializer_class = AgreementSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'PUT' or self.request.method == 'POST':
+            return AgreementUpdateSerializer
+        return AgreementSerializer
 
 
 def generate_files(request, agreement_id):

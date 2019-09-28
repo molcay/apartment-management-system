@@ -4,7 +4,7 @@
     <form>
       <FormInput>
         <template v-slot:labelElement>
-          <label class="label">Oda</label>
+          <label class="label">Bina Numarası</label>
         </template>
         <template v-slot:inputElement>
           <div class="select">
@@ -15,13 +15,53 @@
                 :value="r"
                 :selected="r===agreement.room"
               >
-                {{ r.building_number }}/{{ r.home_number }}-{{ r.room_number }}
+                {{ r.building_number }}
               </option>
             </select>
           </div>
         </template>
       </FormInput>
-      
+
+      <FormInput>
+        <template v-slot:labelElement>
+          <label class="label">Ev Numarası</label>
+        </template>
+        <template v-slot:inputElement>
+          <div class="select">
+            <select v-model="agreement.room">
+              <option
+                v-for="r in rooms"
+                :key="r.id"
+                :value="r"
+                :selected="r===agreement.room"
+              >
+                {{ r.home_number }}
+              </option>
+            </select>
+          </div>
+        </template>
+      </FormInput>
+
+      <FormInput>
+        <template v-slot:labelElement>
+          <label class="label">Oda Numarası</label>
+        </template>
+        <template v-slot:inputElement>
+          <div class="select">
+            <select v-model="agreement.room">
+              <option
+                v-for="r in rooms"
+                :key="r.id"
+                :value="r"
+                :selected="r===agreement.room"
+              >
+                {{ r.room_number }}
+              </option>
+            </select>
+          </div>
+        </template>
+      </FormInput>
+
       <FormInput>
         <template v-slot:labelElement>
           <label class="label">Kiracının Adı-Soyadı</label>
@@ -42,7 +82,7 @@
         </template>
       </FormInput>
 
-      <FormInput>
+      <FormInput v-if="agreement.guarantor">
         <template v-slot:labelElement>
           <label class="label">Kefilin Adı-Soyadı</label>
         </template>
@@ -129,7 +169,7 @@
             <div class="control">
               <button
                 class="button is-primary"
-                @click="createAgreement"
+                @click="saveAgreement"
               >
                 <span class="icon is-small">
                   <i class="fa fa-save" />
@@ -148,33 +188,57 @@
 import api from "../../clients/API"
 
 export default {
-  name: "CreateAgreement",
+  name: "EditedAgreement",
   data() {
     return {
       agreement: {},
+      errors: {},
       rooms: [],
       tenants: [],
       guarantors: [],
-      errors: {},
       pageInfo: {
-        title: "Yeni Sözleşme",
+        title: "Sözleşme Detayları",
+        buttons: [
+          {
+            text: "Dosyaları Oluştur",
+            icon: "far fa-file-word", //'fas fa-file-word',
+            color: "is-info",
+            path_suffix: "/file"
+          },
+          {
+            text: "Detay",
+            icon: "fa fa-info-circle",
+            color: "is-link",
+            path_suffix: `${this.$route.path.replace("duzenle", "detay")}`
+          },
+          {
+            text: "Sil",
+            icon: "fa fa-minus-circle",
+            color: "is-danger",
+            path_suffix: `${this.$route.path.replace("duzenle", "sil")}`
+          }
+        ]
       }
     }
   },
   mounted() {
-
-    this.getRooms().then(rooms => {
-      this.rooms = rooms
+    this.getDetails(this.$route.params.id).then(data => {
+      this.agreement = data
     }),
-    this.getTenants().then(tenants => {
-      this.tenants = tenants
-    }),
-    this.getGuarantors().then(guarantors => {
-      this.guarantors = guarantors
-    })
+      this.getRooms().then(rooms => {
+        this.rooms = rooms
+      }),
+      this.getTenants().then(tenants => {
+        this.tenants = tenants
+      }),
+      this.getGuarantors().then(guarantors => {
+        this.guarantors = guarantors
+      })
   },
   methods: {
-    
+    getDetails: id => {
+      return api.getAgreement(id)
+    },
     getGuarantors: () => {
       return api.getGuarantors()
     },
@@ -184,7 +248,7 @@ export default {
     getTenants: () => {
       return api.getTenants()
     },
-    createAgreement: async function() {
+    saveAgreement: async function() {
       const newAgreement = {
         room: this.agreement.room.id,
         tenant: this.agreement.tenant.id,
@@ -194,8 +258,8 @@ export default {
         lease_price: this.agreement.lease_price,
         dues: this.agreement.dues
       }
-      const resp = await api.createAgreement(newAgreement)
-      if (resp.status === 201) {
+      const resp = await api.saveAgreement(this.agreement.id, newAgreement)
+      if (resp.status === 200) {
         return this.$router.push("/sozlesmeler")
       }      
     }    

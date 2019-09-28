@@ -3,29 +3,21 @@
     <PageHeader
       :page-info="pageInfo"
     />
-    <FormInput>
+    <FormInput v-if="agreement.room">
       <template v-slot:labelElement>
         <label class="label">Oda</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ agreement.room.building_number }} / {{ agreement.room.home_number }} - {{ agreement.room.room_number }}</option>
-          </select>
-        </div>
+        {{ agreement.room.building_number }} / {{ agreement.room.home_number }} - {{ agreement.room.room_number }}
       </template>
     </FormInput>
 
-    <FormInput>
+    <FormInput v-if="agreement.tenant">
       <template v-slot:labelElement>
         <label class="label">Kiracı</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ agreement.tenant.first_name }} {{ agreement.tenant.last_name }}</option>
-          </select>
-        </div>
+        {{ agreement.tenant.first_name }} {{ agreement.tenant.last_name }}({{ agreement.tenant.tc }})
       </template>
     </FormInput>
 
@@ -34,11 +26,7 @@
         <label class="label">Kefil</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ agreement.guarantor.first_name }} {{ agreement.guarantor.last_name }}</option>
-          </select>
-        </div>
+        {{ agreement.guarantor.first_name }} {{ agreement.guarantor.last_name }}({{ agreement.tenant.tc }})
       </template>
     </FormInput>
 
@@ -47,13 +35,7 @@
         <label class="label">Kira Başlangıç Tarihi</label>
       </template>
       <template v-slot:inputElement>
-        <input
-          class="input"
-          :class="{'is-danger': errors && errors.start_date}"
-          type="date"
-          :value="agreement.start_date"
-          disabled
-        >
+        {{ agreement.start_date }}
       </template>
     </FormInput>
 
@@ -62,13 +44,7 @@
         <label class="label">Kira Bitiş Tarihi</label>
       </template>
       <template v-slot:inputElement>
-        <input
-          class="input"
-          :class="{'is-danger': errors && errors.end_date}"
-          type="date"
-          :value="agreement.end_date"
-          disabled
-        >
+        {{ agreement.end_date }}
       </template>
     </FormInput>
 
@@ -77,13 +53,7 @@
         <label class="label">Kira Bedeli</label>
       </template>
       <template v-slot:inputElement>
-        <input
-          class="input"
-          :class="{'is-danger': errors && errors.lease_price}"
-          type="number"
-          :value="agreement.lease_price"
-          disabled
-        >
+        {{ agreement.lease_price }}
       </template>
     </FormInput>
 
@@ -92,21 +62,7 @@
         <label class="label">Aidat Bedeli</label>
       </template>
       <template v-slot:inputElement>
-        <input
-          class="input"
-          :class="{'is-danger': errors && errors.dues}"
-          type="number"
-          :value="agreement.dues"
-          disabled
-        >
-      </template>
-      <template v-slot:helperText>
-        <p
-          v-if="errors && errors.dues"
-          class="help is-danger"
-        >
-          {{ errors.dues[0] }}
-        </p>
+        {{ agreement.dues }}
       </template>
     </FormInput>
   </div>
@@ -119,7 +75,7 @@
     name: 'DetailedAgreement',
     data() {
       return {
-        agreement: null,
+        agreement: {},
         pageInfo: {
           title: 'Sözleşme Detayları',
           buttons: [

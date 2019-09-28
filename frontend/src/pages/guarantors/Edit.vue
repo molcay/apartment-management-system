@@ -184,12 +184,15 @@
 
 <script>
 import api from "../../clients/API"
+import * as bulmaToast from 'bulma-toast'
+
 
 export default {
   name: "EditedGuarantor",
   data() {
     return {
       guarantor: {},
+      errors: {},
       pageInfo: {
         title: "Kefiller",
         buttons: [
@@ -207,7 +210,6 @@ export default {
           }
         ]
       },
-      errors: {},
     }
   },
   mounted() {
@@ -220,18 +222,37 @@ export default {
       return api.getGuarantor(id)
     },
     save: async function() {
-      const newGuarantor = {
-        first_name:this.guarantor.first_name,
-        last_name: this.guarantor.last_name,
-        tc : this.guarantor.tc,
-        gsm : this.guarantor.gsm,
-        address: this.guarantor.address,
-        work_address: this.guarantor.work_address
+      let errorMsg = ''
+
+      if (this.guarantor.tc && this.guarantor.tc.length !== 11){
+         errorMsg = `TC kimlik numarası 11 haneli olmalıdır.`
       }
 
-      const resp = await api.saveGuarantor(this.guarantor.id, newGuarantor)
-      if (resp.status === 200) {
-        this.$router.push("/kefiller")
+      if (this.guarantor.gsm && this.guarantor.gsm.length !== 11){
+        errorMsg = `GSM numarası 11 haneli olmalıdır.`
+      }
+
+      if (errorMsg) {
+        bulmaToast.toast({
+          message: errorMsg,
+          type: 'is-danger',
+          position: "top-right",
+          duration: 3000,
+          dismissible: true,
+        })
+      } else {
+        const newGuarantor = {
+          first_name: this.guarantor.first_name,
+          last_name: this.guarantor.last_name,
+          tc: this.guarantor.tc,
+          gsm: this.guarantor.gsm,
+          address: this.guarantor.address,
+          work_address: this.guarantor.work_address
+        }
+        const resp = await api.saveGuarantor(this.guarantor.id, newGuarantor)
+        if (resp.status === 200) {
+          this.$router.push("/kefiller")
+        }
       }
     }
   }
