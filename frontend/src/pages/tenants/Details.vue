@@ -8,10 +8,8 @@
         <label class="label">İsim</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ tenant.first_name }}</option>
-          </select>
+        <div class="input">
+          {{ tenant.first_name }}
         </div>
       </template>
     </FormInput>
@@ -21,10 +19,8 @@
         <label class="label">Soyisim</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ tenant.last_name }}</option>
-          </select>
+        <div class="input">
+          {{ tenant.last_name }}
         </div>
       </template>
     </FormInput>
@@ -34,10 +30,8 @@
         <label class="label">Adres</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ tenant.address }}</option>
-          </select>
+        <div class="input">
+          {{ tenant.address }}
         </div>
       </template>
     </FormInput>
@@ -47,10 +41,8 @@
         <label class="label">İş Adres</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ tenant.work_address }}</option>
-          </select>
+        <div class="input">
+          {{ tenant.work_address }}
         </div>
       </template>
     </FormInput>
@@ -60,10 +52,8 @@
         <label class="label">Tc</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ tenant.tc }}</option>
-          </select>
+        <div class="input">
+          {{ tenant.tc }}
         </div>
       </template>
     </FormInput>
@@ -73,10 +63,8 @@
         <label class="label">Telefon Numarası</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ tenant.gsm }}</option>
-          </select>
+        <div class="input">
+          {{ tenant.gsm }}
         </div>
       </template>
     </FormInput>
@@ -86,10 +74,8 @@
         <label class="label">E-Posta</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ tenant.email }}</option>
-          </select>
+        <div class="input">
+          {{ tenant.email }}
         </div>
       </template>
     </FormInput>
@@ -104,7 +90,7 @@
     name: 'DetailedTenant',
     data() {
       return {
-        tenant: null,
+        tenant: {},
         pageInfo: {
           title: 'Kiracılar',
           buttons: [

@@ -6,10 +6,8 @@
         <label class="label">Başlık/İsim</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ landlord.title }}</option>
-          </select>
+        <div class="input">          
+          {{ landlord.title }}          
         </div>
       </template>
     </FormInput>
@@ -19,10 +17,8 @@
         <label class="label">Adres</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ landlord.address }}</option>
-          </select>
+        <div class="input">
+          {{ landlord.address }}
         </div>
       </template>
     </FormInput>
@@ -32,10 +28,8 @@
         <label class="label">Banka Bilgisi</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ landlord.bank_info }}</option>
-          </select>
+        <div class="input">
+          {{ landlord.bank_info }}
         </div>
       </template>
     </FormInput>
@@ -45,10 +39,8 @@
         <label class="label">IBAN</label>
       </template>
       <template v-slot:inputElement>
-        <div class="select">
-          <select disabled>
-            <option>{{ landlord.iban }}</option>
-          </select>
+        <div class="input">
+          {{ landlord.iban }}
         </div>
       </template>
     </FormInput>
@@ -63,7 +55,7 @@ export default {
   name: "DetailedLandlord",
   data() {
     return {
-      landlord: null,
+      landlord: {},
       pageInfo: {
         title: "Mülk Sahipleri",
         buttons: [
