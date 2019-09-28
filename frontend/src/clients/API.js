@@ -119,6 +119,13 @@ class API {
       .finally()
   }
 
+  searchTenant(searchText) {
+    return API.get(`/tenants?search=${searchText}`)
+      .then(response => response.data)
+      .catch(error => error)
+      .finally()
+  }
+
   saveAgreement(id,newAgreement) {
     return API.put(`/agreements/${id}/`, newAgreement)
   }

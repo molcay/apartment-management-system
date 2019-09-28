@@ -21,6 +21,7 @@ import EditedGuarantor from './pages/guarantors/Edit'
 import EditedRoom from './pages/rooms/Edit'
 import EditedTenant from './pages/tenants/Edit'
 import EditedAgreement from './pages/agreements/Edit'
+import SearchResult from './pages/SearchResult'
 
 import {tr_to_ascii} from "./helper"
 
@@ -62,6 +63,10 @@ const router = new VueRouter({
     {
       path: tr_to_ascii('/kiracılar/:id/düzenle'),
       component: EditedTenant,
+    },
+    {
+      path: '/arama',
+      component: SearchResult,
     },
     {
       path: tr_to_ascii('/sözleşmeler'),

@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from rest_framework import generics, viewsets
+from rest_framework import generics, viewsets, filters
 
 from api.doc_manager.manager import DocManager
 from api.models import Tenant, Guarantor, Landlord, Room, Agreement, AgreementFile
@@ -10,11 +10,14 @@ from api.serializers import TenantSerializer, GuarantorSerializer, LandlordSeria
 class TenantListCreateView(generics.ListCreateAPIView):
     queryset = Tenant.objects.all()
     serializer_class = TenantSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['first_name']
 
 
 class TenantRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tenant.objects.all()
     serializer_class = TenantSerializer
+
 
 
 class GuarantorListCreateView(generics.ListCreateAPIView):
