@@ -4,7 +4,7 @@
     <form>
       <FormInput>
         <template v-slot:labelElement>
-          <label class="label">Bina Numarası</label>
+          <label class="label">Oda</label>
         </template>
         <template v-slot:inputElement>
           <div class="select">
@@ -15,53 +15,12 @@
                 :value="r"
                 :selected="r===agreement.room"
               >
-                {{ r.building_number }}
+                {{ r.building_number }} / {{ r.home_number }} - {{ r.room_number }} 
               </option>
             </select>
           </div>
         </template>
       </FormInput>
-
-      <FormInput>
-        <template v-slot:labelElement>
-          <label class="label">Ev Numarası</label>
-        </template>
-        <template v-slot:inputElement>
-          <div class="select">
-            <select v-model="agreement.room">
-              <option
-                v-for="r in rooms"
-                :key="r.id"
-                :value="r"
-                :selected="r===agreement.room"
-              >
-                {{ r.home_number }}
-              </option>
-            </select>
-          </div>
-        </template>
-      </FormInput>
-
-      <FormInput>
-        <template v-slot:labelElement>
-          <label class="label">Oda Numarası</label>
-        </template>
-        <template v-slot:inputElement>
-          <div class="select">
-            <select v-model="agreement.room">
-              <option
-                v-for="r in rooms"
-                :key="r.id"
-                :value="r"
-                :selected="r===agreement.room"
-              >
-                {{ r.room_number }}
-              </option>
-            </select>
-          </div>
-        </template>
-      </FormInput>
-
       <FormInput>
         <template v-slot:labelElement>
           <label class="label">Kiracının Adı-Soyadı</label>
