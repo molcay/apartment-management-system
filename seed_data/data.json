@@ -443,5 +443,31 @@
       "size": "13,23",
       "landlord": "Gülşah VERYERİ MORAL"
     }
+  ],
+  "tenants": [
+    {
+      "first_name": "M. Olcay",
+      "last_name": "TERCANLI",
+      "address": "İYTE",
+      "work_address": "İYTE",
+      "tc": "11111111110",
+      "gsm": "05391234567"
+    },
+    {
+      "first_name": "Uğur",
+      "last_name": "ÖZCAN",
+      "address": "İYTE",
+      "work_address": "İYTE",
+      "tc": "11111111112",
+      "gsm": "05391234568"
+    },
+    {
+      "first_name": "Aslıhan",
+      "last_name": "ARSLAN",
+      "address": "İYTE",
+      "work_address": "İYTE",
+      "tc": "11111111114",
+      "gsm": "05391234569"
+    }
   ]
 }
