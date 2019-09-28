@@ -135,6 +135,8 @@
 
 <script>
   import api from "../../clients/API"
+  import * as bulmaToast from 'bulma-toast'
+
 
   export default {
     name: 'DetailedTenant',
@@ -165,18 +167,38 @@
         return api.getTenant(id)
       },
       save: async function(){
-        const newTenant = {
-          first_name: this.tenant.first_name,
-          last_name: this.tenant.last_name,
-          address: this.tenant.address,
-          work_address: this.tenant.work_address,
-          tc: this.tenant.tc,
-          gsm: this.tenant.gsm,
-          email: this.tenant.email,
-        }
-        const resp = await api.saveTenant(this.tenant.id, newTenant)
-        if(resp.status==200){
-          return this.$router.push("/kiracilar")
+        let errorMsg = ''
+      if (this.tenant.tc && this.tenant.tc.length !==11 ){
+        errorMsg = `TC kimlik numarası 11 haneli olmalıdır.`
+      }
+      
+      if (this.tenant.gsm && this.tenant.gsm.length !==11 ) {
+        errorMsg = `GSM numarası 11 haneli olmalıdır.`
+      }
+
+      if (errorMsg) {
+        bulmaToast.toast({
+          message: errorMsg,
+          type: 'is-danger',
+          position: "top-center",
+          duration: 3000,
+          dismissable: true
+        })
+      } else {
+
+          const newTenant = {
+            first_name: this.tenant.first_name,
+            last_name: this.tenant.last_name,
+            address: this.tenant.address,
+            work_address: this.tenant.work_address,
+            tc: this.tenant.tc,
+            gsm: this.tenant.gsm,
+            email: this.tenant.email,
+          }
+          const resp = await api.saveTenant(this.tenant.id, newTenant)
+          if(resp.status==200){
+            return this.$router.push("/kiracilar")
+          }
         }
       } 
     }

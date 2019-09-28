@@ -230,7 +230,7 @@ export default {
         bulmaToast.toast({
           message: errorMsg,
           type: 'is-danger',
-          position: "top-right",
+          position: "top-center",
           duration: 3000,
           dismissible: true,
         })

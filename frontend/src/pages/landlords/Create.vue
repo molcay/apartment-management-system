@@ -122,6 +122,7 @@
 <script>
 import {tr_to_ascii} from "../../helper"
 import api from "../../clients/API"
+import * as bulmaToast from 'bulma-toast'
 
 export default {
   name: "CreateLandlord",
@@ -140,7 +141,21 @@ export default {
       return api.getLandlord(id)
     },
     save: async function () {
-      const newLandLord = {
+      let errorMsg = ''
+      if (this.landlord.iban && this.landlord.iban.length !== 32 ){
+        errorMsg = `IBAN 32 haneli olmalıdır.`
+      }
+      if (errorMsg){
+        bulmaToast.toast({
+          message: errorMsg,
+          type: 'is-danger',
+          position: "top-center",
+          duration: 3000,
+          dismissable: true
+        })
+      }
+      else {
+        const newLandLord = {
         title: this.landlord.title,
         address: this.landlord.address,
         bank_info: this.landlord.bank_info,
@@ -150,6 +165,8 @@ export default {
       const resp = await api.createLandlord(newLandLord)
       if (resp.status === 201) {
         this.$router.push(tr_to_ascii("/mülk_sahipleri"))
+      }
+        
       }
     } 
   }

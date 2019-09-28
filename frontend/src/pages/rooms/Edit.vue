@@ -109,6 +109,8 @@
 
 <script>
 import api from "../../clients/API"
+import * as bulmaToast from 'bulma-toast'
+
 
 export default {
   name: "EditedRoom",
@@ -146,17 +148,38 @@ export default {
       return api.getLandlords()
     },
     saveRoom: async function() {
-      const newRoom = {
-        building_number: this.room.building_number,
-        home_number: this.room.home_number,
-        room_number: this.room.room_number,
-        size: this.room.size,
-        landlord: this.room.landlord.id
+      let errorMsg = ''
+      
+      if (this.room.tc && this.room.tc.length !==11 ){
+        errorMsg = `TC kimlik numarası 11 haneli olmalıdır.`
+      }
+      
+
+      if (this.room.gsm && this.room.gsm.length !=11 ) {
+        errorMsg = `Oda numarası 1 haneli olmalıdır.`
       }
 
-      const resp = await api.saveRoom(this.room.id, newRoom)
-      if (resp.status===200) {
-        return this.$router.push("/odalar")
+      if (errorMsg) {
+        bulmaToast.toast({
+          message: errorMsg,
+          type: 'is-danger',
+          position: "top-center",
+          duration: 3000,
+          dismissable: true
+        })
+      } else {
+        const newRoom = {
+          building_number: this.room.building_number,
+          home_number: this.room.home_number,
+          room_number: this.room.room_number,
+          size: this.room.size,
+          landlord: this.room.landlord.id
+        }
+
+        const resp = await api.saveRoom(this.room.id, newRoom)
+        if (resp.status===200) {
+          return this.$router.push("/odalar")
+        }
       }
     }
   }

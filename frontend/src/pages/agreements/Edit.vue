@@ -15,7 +15,7 @@
                 :value="r"
                 :selected="r===agreement.room"
               >
-                {{ r.building_number }} / {{ r.home_number }} - {{ r.room_number }} 
+                {{ r.building_number }} / {{ r.home_number }} - {{ r.room_number }}
               </option>
             </select>
           </div>
@@ -145,6 +145,7 @@
 
 <script>
 import api from "../../clients/API"
+import * as bulmaToast from "bulma-toast"
 
 export default {
   name: "EditedAgreement",
@@ -169,7 +170,7 @@ export default {
             icon: "fa fa-info-circle",
             color: "is-link",
             path_suffix: `${this.$route.path.replace("duzenle", "detay")}`
-          },
+          }
         ]
       }
     }
@@ -202,20 +203,45 @@ export default {
       return api.getTenants()
     },
     saveAgreement: async function() {
-      const newAgreement = {
-        room: this.agreement.room.id,
-        tenant: this.agreement.tenant.id,
-        guarantor: this.agreement.guarantor ? this.agreement.guarantor.id : null,
-        start_date: this.agreement.start_date,
-        end_date: this.agreement.end_date,
-        lease_price: this.agreement.lease_price,
-        dues: this.agreement.dues
+      let errorMsg = ""
+
+      if (
+        this.agreement.lease_price &&
+        Number(this.agreement.lease_price) <= 0
+      ) {
+        errorMsg = `Kira bedeli 0'dan büyük olmalıdır.`
       }
-      const resp = await api.saveAgreement(this.agreement.id, newAgreement)
-      if (resp.status === 200) {
-        return this.$router.push("/sozlesmeler")
-      }      
-    }    
+
+      if (this.agreement.dues && Number(this.agreement.dues) <= 0) {
+        errorMsg = `Aidat bedeli 0'dan büyük olmalıdır.`
+      }
+
+      if (errorMsg) {
+        bulmaToast.toast({
+          message: errorMsg,
+          type: "is-danger",
+          position: "top-center",
+          duration: 3000,
+          dismissable: true
+        })
+      } else {
+        const newAgreement = {
+          room: this.agreement.room.id,
+          tenant: this.agreement.tenant.id,
+          guarantor: this.agreement.guarantor
+            ? this.agreement.guarantor.id
+            : null,
+          start_date: this.agreement.start_date,
+          end_date: this.agreement.end_date,
+          lease_price: this.agreement.lease_price,
+          dues: this.agreement.dues
+        }
+        const resp = await api.saveAgreement(this.agreement.id, newAgreement)
+        if (resp.status === 200) {
+          return this.$router.push("/sozlesmeler")
+        }
+      }
+    }
   }
 }
 </script>

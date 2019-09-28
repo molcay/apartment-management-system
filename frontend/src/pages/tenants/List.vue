@@ -1,7 +1,10 @@
 <template>
   <div>
     <PageHeader :page-info="pageInfo" />
-    <table v-if="tenants.length" class="table is-striped is-hoverable is-fullwidth">
+    <table
+      v-if="tenants.length"
+      class="table is-striped is-hoverable is-fullwidth"
+    >
       <thead>
         <tr>
           <th>Adı - Soyadı</th>
@@ -14,9 +17,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="is-vcentered"
+        <tr
           v-for="t in tenants"
           :key="t.id"
+          class="is-vcentered"
         >
           <td>{{ t.first_name }} {{ t.last_name }}</td>
           <td>{{ t.tc }}</td>

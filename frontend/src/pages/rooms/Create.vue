@@ -109,6 +109,8 @@
 
 <script>
 import api from "../../clients/API"
+import * as bulmaToast from 'bulma-toast'
+
 
 export default {
   name: "CreateRoom",
@@ -132,17 +134,41 @@ export default {
       return api.getLandlords()
     },
     createRoom: async function() {
-      const newRoom = {
-        building_number: this.room.building_number,
-        home_number: this.room.home_number,
-        room_number: this.room.room_number,
-        size: this.room.size,
-        landlord: this.room.landlord.id
+      let errorMsg = ''
+      
+      if (this.room.building_number && this.room.building_number.length !==3 ){
+        errorMsg = `Bina numarası 3 haneli olmalıdır.`
+      }
+      
+      if (this.room.home_number && this.room.home_number.length !==1 && this.room.home_number.length !==2 ) {
+        errorMsg = `Ev numarası 1 ya da 2 haneli olmalıdır.`
       }
 
-      const resp = await api.createRoom(newRoom)
-      if (resp.status===201) {
-        return this.$router.push("/odalar")
+      if (this.room.room_number && this.room.room_number.length !=1 ) {
+        errorMsg = `Oda numarası 1 haneli olmalıdır.`
+      }
+
+      if (errorMsg) {
+        bulmaToast.toast({
+          message: errorMsg,
+          type: 'is-danger',
+          position: "top-center",
+          duration: 3000,
+          dismissable: true
+        })
+      } else {
+        const newRoom = {
+          building_number: this.room.building_number,
+          home_number: this.room.home_number,
+          room_number: this.room.room_number,
+          size: this.room.size,
+          landlord: this.room.landlord.id
+        }
+
+        const resp = await api.createRoom(newRoom)
+        if (resp.status===201) {
+          return this.$router.push("/odalar")
+        }
       }
     }
   }

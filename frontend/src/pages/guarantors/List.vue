@@ -1,7 +1,10 @@
 <template>
   <div>
     <PageHeader :page-info="pageInfo" />
-    <table v-if="guarantors.length" class="table is-striped is-hoverable is-fullwidth">
+    <table
+      v-if="guarantors.length"
+      class="table is-striped is-hoverable is-fullwidth"
+    >
       <thead>
         <tr>
           <th>Adı - Soyadı</th>

@@ -69,10 +69,9 @@
           if (resp.status === 204) {
             this.getEntityList()
           } else {
-            this.onError();
+            this.onError()
           }
-        }).catch((err) => {
-          console.error(err)
+        }).catch(() => {
           this.onError()
         })
       },

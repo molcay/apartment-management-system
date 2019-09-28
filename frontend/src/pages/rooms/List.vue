@@ -1,7 +1,10 @@
 <template>
   <div>
     <PageHeader :page-info="pageInfo" />
-    <table v-if="rooms.length" class="table is-striped is-hoverable is-fullwidth">
+    <table
+      v-if="rooms.length"
+      class="table is-striped is-hoverable is-fullwidth"
+    >
       <thead>
         <tr>
           <th>Oda</th>
@@ -20,10 +23,12 @@
           <td>{{ r.building_number }} / {{ r.home_number }} - {{ r.room_number }}</td>
           <td>{{ r.size }}</td>
           <td>{{ r.landlord.title }}</td>
-          <td><EntityActions
-            :entity="r"
-            :get-entity-list="getRooms"
-          /></td>
+          <td>
+            <EntityActions
+              :entity="r"
+              :get-entity-list="getRooms"
+            />
+          </td>
         </tr>
       </tbody>
     </table>
