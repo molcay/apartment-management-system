@@ -21,11 +21,8 @@ pipenv shell  # this command activate virtual environment. If the environment di
 
 * Install dependencies (please use `Pipfile`).
 ```bash
-pipenv install
+pipenv install --dev
 ```
-
-* Ensure that the database configured correctly.
-> defaults: DB_NAME=`ams_db`, USER=`admin`, PASSWORD=`admin`, host=`localhost`, PORT=`5432` 
 
 * Start application.
 ```bash
@@ -55,20 +52,3 @@ yarn dev
 ```
 
 > NOTE: If you want to develop front-end you need to start backend as well.
-
-#### Docker for `PostgreSQL`
-* Run `postgresql` as docker container 
-```bash
-docker run -p 5432:5432 --name ams-postgres -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=admin -d postgres
-```
-> Please not that the data of the database is volatile.
-
-* Start docker container with:
-```bash
-docker start ams-postgres
-```
-
-* Stop docker container with:
-```bash
-docker stop ams-postgres
-```
