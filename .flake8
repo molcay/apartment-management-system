@@ -26,7 +26,10 @@ exclude =
     # Auto generated migrations folder (by django)
     **/migrations
 
-max-line-length = 120
-
 per-file-ignores =
     project/settings/*:F403,F405
+
+filename =
+    *.py
+
+max-line-length = 120
