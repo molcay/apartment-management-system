@@ -121,7 +121,7 @@
         return api.getAgreement(id)
       },
       createFiles: (id) => {
-        return api.createAgreementFiles(id);
+        return api.createAgreementFiles(id)
       }
     },
   }
