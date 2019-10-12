@@ -1,0 +1,4 @@
+- repo: https://github.com/molcay/apartment-management-system.git
+  rev: head
+  hooks:
+  - id: flake8
