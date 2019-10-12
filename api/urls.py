@@ -17,5 +17,5 @@ urlpatterns = [
     path('rooms/', views.RoomListCreateView.as_view(), name='rooms'),
     path('rooms/<int:pk>/', views.RoomRetrieveUpdateDestroyView.as_view(), name='room_actions'),
     url(r'^', include(router.urls)),
-    path('agreements/<int:agreement_id>/file', views.generate_files, name='agreements'),
+    path('agreements/<int:agreement_id>/create_files', views.generate_files, name='agreements'),
 ]

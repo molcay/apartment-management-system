@@ -187,6 +187,6 @@ DOC_MANAGER = {
         'DIR': str(ROOT_DIR.path('doc_templates')),
     },
     'GENERATED': {
-        'DIR': str(ROOT_DIR.path('generated')),
+        'DIR': str(ROOT_DIR.path('media/generated')),
     },
 }

@@ -184,7 +184,11 @@ class API {
   
   createAgreement(newAgreement) {
     return API.post(`/agreements/`, newAgreement)
-  } 
+  }
+
+  createAgreementFiles(id) {
+    return API.get(`/agreements/${id}/create_files`)
+  }
 }
 
 const api = new API()

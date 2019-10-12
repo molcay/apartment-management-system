@@ -20,6 +20,7 @@ class LandlordSerializer(serializers.ModelSerializer):
         model = Landlord
         fields = '__all__'
 
+
 class RoomUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -37,8 +38,8 @@ class AgreementUpdateSerializer(serializers.ModelSerializer):
         model = Agreement
         fields = '__all__'
 
+
 class AgreementSerializer(AgreementUpdateSerializer):
     room = RoomSerializer()
     tenant = TenantSerializer()
     guarantor = GuarantorSerializer()
-    
