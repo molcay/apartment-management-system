@@ -42,6 +42,16 @@
             </div>
           </div>
         </div>
+        <div class="navbar-item">
+          <router-link to="/kaydol">
+            <span class="fas fa-user" /> Sign Up
+          </router-link>
+        </div>
+        <div class="navbar-item">
+          <router-link to="/giris">
+            <span class="fas fa-sign-in-alt" /> Login
+          </router-link>
+        </div>
       </div>
     </nav>
     <section class="section">

@@ -21,7 +21,7 @@ import EditedGuarantor from './pages/guarantors/Edit'
 import EditedRoom from './pages/rooms/Edit'
 import EditedTenant from './pages/tenants/Edit'
 import EditedAgreement from './pages/agreements/Edit'
-
+import SignUp from './pages/accounts/SignUp'
 import {tr_to_ascii} from "./helper"
 
 const router = new VueRouter({
@@ -30,6 +30,10 @@ const router = new VueRouter({
     {
       path: '/',
       component: Home,
+    },
+    {
+      path: '/kaydol',
+      component: SignUp,
     },
     {
       path: '/odalar',
