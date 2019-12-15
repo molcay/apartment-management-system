@@ -1,6 +1,10 @@
+from django.contrib.auth.models import User
 from rest_framework import serializers
+from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
+from rest_framework.validators import UniqueValidator
 
 from api.models import Guarantor, Tenant, Landlord, Room, Agreement
+from project.utils.TurkishIdentityNumberUtils import TurkishIdentityNumberUtils
 
 
 class GuarantorSerializer(serializers.ModelSerializer):
@@ -20,6 +24,7 @@ class LandlordSerializer(serializers.ModelSerializer):
         model = Landlord
         fields = '__all__'
 
+
 class RoomUpdateSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -37,8 +42,22 @@ class AgreementUpdateSerializer(serializers.ModelSerializer):
         model = Agreement
         fields = '__all__'
 
+
 class AgreementSerializer(AgreementUpdateSerializer):
     room = RoomSerializer()
     tenant = TenantSerializer()
     guarantor = GuarantorSerializer()
-    
+
+
+class UserRegistrationSerializer(BaseUserRegistrationSerializer):
+    email = serializers.EmailField(
+        required=True,
+        validators=[
+            UniqueValidator(queryset=User.objects.all())
+        ]
+    )
+
+    def validate_username(self, value: str):
+        if not TurkishIdentityNumberUtils.validate(value):
+            raise serializers.ValidationError('Username must be T.C. ID.')
+        return value

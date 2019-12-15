@@ -3,7 +3,7 @@ import os
 from django.conf import settings
 from docxtpl import DocxTemplate, RichText
 
-from api.models import Agreement
+from api.models import Agreement, ApartInfo
 from project.utils.TurkishUtils import TurkishUtils
 
 
@@ -40,7 +40,7 @@ class DocManager:
         return DocManager.get_rich_text(txt, bold=True)
 
     @staticmethod
-    def to_template_context(agreement: Agreement) -> dict:
+    def to_template_context(agreement: Agreement, apart: ApartInfo) -> dict:
         birim_kira_bedeli_str = "{}. ({})".format(
             TurkishUtils.currency_to_human_readable(agreement.lease_price),
             'OKUNUŞ BURAYA GELECEK'
@@ -59,6 +59,12 @@ class DocManager:
         )  # TODO: change * 10 with how many months last the lease.
 
         data = {
+            'apart_adi_kisa_baslik': DocManager.get_rich_text(apart.short_title.upper(), bold=True, size=32),
+            'apart_adi_kisa': DocManager.get_rich_text(apart.short_title.title()),
+            'adres_cad': DocManager.get_rich_text(apart.address_street),
+            'adres_mah': DocManager.get_rich_text(apart.address_neighborhood),
+            'adres_ilce': DocManager.get_rich_text(apart.address_district),
+            'adres_il_to_upper': DocManager.get_rich_text(apart.address_city.upper()),
             'dis_kapi_no': DocManager.get_bold_text(agreement.room.building_number),
             'daire_no': DocManager.get_bold_text(agreement.room.home_number),
             'oda_no': DocManager.get_bold_text(agreement.room.room_number),
@@ -74,6 +80,8 @@ class DocManager:
             'birim_aidat_bedeli': DocManager.get_bold_text(birim_aidat_bedeli_str),
             'yillik_kira_bedeli': DocManager.get_bold_text(yillik_kira_bedeli_str),
             'yillik_aidat_bedeli': DocManager.get_bold_text(yillik_aidat_bedeli_str),
+            'mulk_sahibi_banka_bilgisi': DocManager.get_bold_text(agreement.room.landlord.bank_info),
+            'mulk_sahibi_iban': DocManager.get_bold_text(agreement.room.landlord.iban),
         }
 
         if agreement.guarantor is not None:
@@ -86,8 +94,8 @@ class DocManager:
 
         return data
 
-    def create(self, agreement: Agreement) -> str:
-        self.doc.render(DocManager.to_template_context(agreement))
+    def create(self, agreement: Agreement, apart: ApartInfo) -> str:
+        self.doc.render(DocManager.to_template_context(agreement, apart))
 
         filename_to_save = self._get_generated_file_name(agreement)
         print(filename_to_save)

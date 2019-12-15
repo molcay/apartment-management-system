@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 pylint = "*"
+flake8 = "*"
 
 [packages]
 django = "*"
@@ -12,3 +13,5 @@ djangorestframework = "*"
 django-webpack-loader = "*"
 django-environ = "*"
 docxtpl = "*"
+django-pyctx = "*"
+djoser = "*"

@@ -19,6 +19,8 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
     path('api/v1/', include('api.urls'), name='APIv1'),
     path('', TemplateView.as_view(template_name='vue-app.html'), name='app'),
 ]

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from api.models import Person, Tenant, Guarantor, Landlord, Room, Agreement, AgreementFile
+from api.models import Person, Tenant, Guarantor, Landlord, Room, Agreement, AgreementFile, ApartInfo
 
 admin.site.register([
     Person,
@@ -10,4 +10,5 @@ admin.site.register([
     Room,
     Agreement,
     AgreementFile,
+    ApartInfo,
 ])

@@ -2,7 +2,7 @@ import json
 
 from django.core.management.base import BaseCommand
 
-from api.models import Landlord, Room, Tenant
+from api.models import Landlord, Room, Tenant, ApartInfo
 
 
 class Command(BaseCommand):
@@ -36,6 +36,12 @@ class Command(BaseCommand):
                 instance = Tenant(**tenant)
                 instance.save()
                 print(instance)
+
+        if len(ApartInfo.objects.all()) == 0:
+            apart = data['apart']
+            instance = ApartInfo(**apart)
+            instance.save()
+            print(apart)
 
     def _read_data_file(self):
         with open(self.data_path, 'r') as file:

@@ -21,7 +21,12 @@ import EditedGuarantor from './pages/guarantors/Edit'
 import EditedRoom from './pages/rooms/Edit'
 import EditedTenant from './pages/tenants/Edit'
 import EditedAgreement from './pages/agreements/Edit'
+<<<<<<< HEAD
 import SignUp from './pages/accounts/SignUp'
+=======
+import SearchResult from './pages/SearchResult'
+
+>>>>>>> 2290a5458a5604e93e12fd15a26eff3146d5a1d7
 import {tr_to_ascii} from "./helper"
 
 const router = new VueRouter({
@@ -66,6 +71,10 @@ const router = new VueRouter({
     {
       path: tr_to_ascii('/kiracılar/:id/düzenle'),
       component: EditedTenant,
+    },
+    {
+      path: '/arama',
+      component: SearchResult,
     },
     {
       path: tr_to_ascii('/sözleşmeler'),

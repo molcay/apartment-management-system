@@ -82,7 +82,8 @@ class Agreement(models.Model):
 
     @property
     def filename(self):
-        return '{}__{}__{}'.format(self.room.human_readable_room_name.replace(' ', '_').replace('/', '_'), self.tenant.name.replace(' ', '_'), self.id)
+        return '{}__{}__{}'.format(self.room.human_readable_room_name.replace(' ', '_').replace('/', '_'),
+                                   self.tenant.name.replace(' ', '_'), self.id)
 
 
 class AgreementFile(models.Model):
@@ -93,3 +94,18 @@ class AgreementFile(models.Model):
     class Meta:
         verbose_name = 'Anlaşma Dosyası'
         verbose_name_plural = 'Anlaşma Dosyaları'
+
+
+class ApartInfo(models.Model):
+    title = models.CharField('İsim', max_length=255)
+    short_title = models.CharField('Kısa İsim', max_length=255)
+    address_street = models.CharField('Cadde', max_length=50)
+    address_neighborhood = models.CharField('Mahalle', max_length=50)
+    address_district = models.CharField('İlçe', max_length=50)
+    address_city = models.CharField('İl', max_length=50)
+    bank_info = models.CharField('Banka Bilgisi', max_length=256)
+    iban = models.CharField('IBAN', max_length=50)
+
+    class Meta:
+        verbose_name = "Apart Bilgisi"
+        verbose_name_plural = "Apart Bilgileri"

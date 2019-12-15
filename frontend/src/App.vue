@@ -70,6 +70,7 @@
 
 <script>
   import * as bulmaToast from 'bulma-toast'
+  //import api from "./clients/API"
 
   import Tabs from './components/Tabs'
   import {tr_to_ascii} from './helper'
@@ -114,7 +115,7 @@
       }
     },
     methods: {
-      search() {
+      async search() {
         if (this.searchQuery && this.searchQuery.length > 2) {
           bulmaToast.toast({
             message: `'${this.searchQuery}' aranıyor...`,
@@ -127,6 +128,9 @@
             position: "top-center",
             closeOnClick: true,
           })
+          //`/arama?search=${this.searchQuery}`
+          this.$router.push({path : '/arama', query : {search:`${this.searchQuery}`}})
+
         } else {
           bulmaToast.toast({
             message: `Aramak için en az 3 harf girmeniz gerekmektedir`,

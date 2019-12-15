@@ -97,7 +97,9 @@
               text: 'Dosyaları Oluştur',
               icon: 'far fa-file-word', //'fas fa-file-word',
               color: 'is-info',
-              path_suffix: '/file',
+              on_click: () => {
+                this.createFiles(this.agreement.id)
+              },
             },
             {
               text: 'Düzenle',
@@ -117,6 +119,9 @@
     methods: {
       getDetails: (id) => {
         return api.getAgreement(id)
+      },
+      createFiles: (id) => {
+        return api.createAgreementFiles(id)
       }
     },
   }

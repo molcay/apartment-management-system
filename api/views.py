@@ -1,8 +1,9 @@
 from django.http import JsonResponse
-from rest_framework import generics, viewsets
+from django.shortcuts import get_object_or_404
+from rest_framework import generics, viewsets, filters
 
 from api.doc_manager.manager import DocManager
-from api.models import Tenant, Guarantor, Landlord, Room, Agreement, AgreementFile
+from api.models import Tenant, Guarantor, Landlord, Room, Agreement, AgreementFile, ApartInfo
 from api.serializers import TenantSerializer, GuarantorSerializer, LandlordSerializer, RoomSerializer, \
     AgreementSerializer, RoomUpdateSerializer, AgreementUpdateSerializer
 
@@ -10,6 +11,8 @@ from api.serializers import TenantSerializer, GuarantorSerializer, LandlordSeria
 class TenantListCreateView(generics.ListCreateAPIView):
     queryset = Tenant.objects.all()
     serializer_class = TenantSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['first_name']
 
 
 class TenantRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
@@ -19,7 +22,11 @@ class TenantRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 
 class GuarantorListCreateView(generics.ListCreateAPIView):
     queryset = Guarantor.objects.all()
-    serializer_class = GuarantorSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return GuarantorSerializer
+        return GuarantorSerializer
 
 
 class GuarantorRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
@@ -39,25 +46,15 @@ class LandlordRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 
 class RoomListCreateView(generics.ListCreateAPIView):
     queryset = Room.objects.all()
-    # serializer_class = RoomSerializer
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return RoomUpdateSerializer
         return RoomSerializer
 
-class GuarantorListCreateView(generics.ListCreateAPIView):
-    queryset = Guarantor.objects.all()
-    # serializer_class = RoomSerializer
-
-    def get_serializer_class(self):
-        if self.request.method == 'POST':
-            return GuarantorSerializer
-        return GuarantorSerializer
 
 class RoomRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Room.objects.all()
-    # serializer_class = RoomSerializer
 
     def get_serializer_class(self):
         if self.request.method == 'PUT':
@@ -71,7 +68,6 @@ class BaseViewSet(viewsets.ModelViewSet):    # TODO: add permissions here
 
 class AgreementViewSet(BaseViewSet):
     queryset = Agreement.objects.all()
-    #serializer_class = AgreementSerializer
 
     def get_serializer_class(self):
         if self.request.method == 'PUT' or self.request.method == 'POST':
@@ -83,7 +79,8 @@ def generate_files(request, agreement_id):
     agreement = Agreement.objects.get(pk=agreement_id)
     print(agreement)
     manager = DocManager('SOZLESME_TEMPLATE.docx')
-    filepath = manager.create(agreement)
+    apart = get_object_or_404(ApartInfo, pk=1)
+    filepath = manager.create(agreement, apart)
     print('filepath', filepath)
     file = AgreementFile(agreement=agreement, file=filepath)
     file.save()

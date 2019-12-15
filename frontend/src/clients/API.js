@@ -119,6 +119,13 @@ class API {
       .finally()
   }
 
+  searchTenant(searchText) {
+    return API.get(`/tenants?search=${searchText}`)
+      .then(response => response.data)
+      .catch(error => error)
+      .finally()
+  }
+
   saveAgreement(id,newAgreement) {
     return API.put(`/agreements/${id}/`, newAgreement)
   }
@@ -177,7 +184,11 @@ class API {
   
   createAgreement(newAgreement) {
     return API.post(`/agreements/`, newAgreement)
-  } 
+  }
+
+  createAgreementFiles(id) {
+    return API.get(`/agreements/${id}/create_files`)
+  }
 }
 
 const api = new API()

@@ -451,7 +451,8 @@
       "address": "İYTE",
       "work_address": "İYTE",
       "tc": "11111111110",
-      "gsm": "05391234567"
+      "gsm": "05391234567",
+      "email": "molcay@mail.com"
     },
     {
       "first_name": "Uğur",
@@ -459,7 +460,8 @@
       "address": "İYTE",
       "work_address": "İYTE",
       "tc": "11111111112",
-      "gsm": "05391234568"
+      "gsm": "05391234568",
+      "email": "ugur@mail.com"
     },
     {
       "first_name": "Aslıhan",
@@ -467,7 +469,18 @@
       "address": "İYTE",
       "work_address": "İYTE",
       "tc": "11111111114",
-      "gsm": "05391234569"
+      "gsm": "05391234569",
+      "email": "aslihan@mail.com"
     }
-  ]
+  ],
+  "apart": {
+    "title": "Gez, Oturma Yerinde Artık",
+    "short_title": "GOYA",
+    "address_street": "Zafer Cad.",
+    "address_neighborhood": "Altıntaş Mah.",
+    "address_district": "Urla",
+    "address_city": "İzmir",
+    "bank_info": "Garanti Bankası, Kemeraltı Şubesi",
+    "iban": "TR24 0006 2000 7300 0006 2965 95"
+  }
 }

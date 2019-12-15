@@ -53,6 +53,8 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'webpack_loader',
     'rest_framework',
+    'djoser',
+    'django_pyctx',
 ]
 
 LOCAL_APPS = [
@@ -60,6 +62,7 @@ LOCAL_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django_pyctx.middlewares.RequestCTXMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -106,6 +109,12 @@ DATABASES = {
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
     ]
 }
 
@@ -181,6 +190,19 @@ DOC_MANAGER = {
         'DIR': str(ROOT_DIR.path('doc_templates')),
     },
     'GENERATED': {
-        'DIR': str(ROOT_DIR.path('generated')),
+        'DIR': str(ROOT_DIR.path('media/generated')),
     },
+}
+
+# Djoser
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': 'auth/reset_password/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_RETYPE': True,
+    'SEND_ACTIVATION_EMAIL': False,
+    'SERIALIZERS': {
+        'user_create': 'api.serializers.UserRegistrationSerializer',
+    },
+    'PERMISSIONS': {
+        'activation': ['rest_framework.permissions.AllowAny'],
+    }
 }
