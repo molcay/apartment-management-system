@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Person(models.Model):
@@ -109,3 +110,20 @@ class ApartInfo(models.Model):
     class Meta:
         verbose_name = "Apart Bilgisi"
         verbose_name_plural = "Apart Bilgileri"
+
+
+class Issue(models.Model):
+    summary = models.CharField('Arıza Tanımı', max_length=300)
+    issue_type = models.CharField('Arıza Türü', max_length=50)
+    created_at = models.DateTimeField('Oluşturulma Tarihi', auto_now_add=True)
+    updated_at = models.DateTimeField('Güncellenme Tarihi', auto_now=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.CharField('Arıza Durumu', max_length=50)
+    reply = models.CharField('Arıza Geri Bildirimi', max_length=300)
+
+    class Meta:
+        verbose_name = 'Arıza'
+        verbose_name_plural = 'Arızalar'
+
+    def __str__(self):
+        return self.summary

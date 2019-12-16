@@ -100,6 +100,10 @@
       text: 'Mülk Sahipleri',
       path: tr_to_ascii('/mülk_sahipleri'),
       icon: 'fas fa-building',
+    },    {
+      text: 'Arızalar',
+      path: tr_to_ascii('/arızalar'),
+      icon: 'fas fa-wrench',
     },
   ]
 
