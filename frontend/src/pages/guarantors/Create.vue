@@ -7,15 +7,16 @@
           <label
             for="field-first-name"
             class="label"
-          >Ad</label>
+          >İsim</label>
         </template>
         <template v-slot:inputElement>
           <input
             v-model="guarantor.first_name"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="İsim"
           >
         </template>
         <template v-slot:helperText>
@@ -33,15 +34,16 @@
           <label
             for="field-last-name"
             class="label"
-          >Soyad</label>
+          >Soyisim</label>
         </template>
         <template v-slot:inputElement>
           <input
             v-model="guarantor.last_name "
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="Soyisim"
           >
         </template>
         <template v-slot:helperText>
@@ -66,8 +68,9 @@
             v-model="guarantor.tc "
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="T.C. Kimlik Numarası"
           >
         </template>
         <template v-slot:helperText>
@@ -85,15 +88,16 @@
           <label
             for="field-gsm"
             class="label"
-          >Cep Telefonu</label>
+          >Telefon Numarası</label>
         </template>
         <template v-slot:inputElement>
           <input
             v-model="guarantor.gsm"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="Telefon Numarası"
           >
         </template>
         <template v-slot:helperText>
@@ -111,15 +115,16 @@
           <label
             for="field-address"
             class="label"
-          >Adresi</label>
+          >Adres</label>
         </template>
         <template v-slot:inputElement>
           <input
             v-model="guarantor.address "
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="Adres"
           >
         </template>
         <template v-slot:helperText>
@@ -144,8 +149,9 @@
             v-model="guarantor.work_address "
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="İş Adresi"
           >
         </template>
         <template v-slot:helperText>

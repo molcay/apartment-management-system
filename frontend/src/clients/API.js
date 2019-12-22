@@ -1,7 +1,7 @@
 import axios from "axios"
 
 class API {
-  static API_V1_PREFIX = '/api/v1'
+  static API_V1_PREFIX = "/api/v1"
 
   static get(path) {
     return axios.get(`${API.API_V1_PREFIX}${path}`)
@@ -12,7 +12,7 @@ class API {
   }
 
   static put(path, data) {
-    return axios.put(`${API.API_V1_PREFIX}${path}`,data)
+    return axios.put(`${API.API_V1_PREFIX}${path}`, data)
   }
 
   static delete(path) {
@@ -20,66 +20,66 @@ class API {
   }
 
   getAgreements() {
-    return API.get('/agreements')
-      .then(function (response) {
+    return API.get("/agreements")
+      .then(function(response) {
         return response.data
       })
-      .catch(function (error) {
+      .catch(function(error) {
         return error
       })
-      .finally(function () {
+      .finally(function() {
         // always executed
       })
   }
 
   getGuarantors() {
-    return API.get('/guarantors')
-      .then(function (response) {
+    return API.get("/guarantors")
+      .then(function(response) {
         return response.data
       })
-      .catch(function (error) {
+      .catch(function(error) {
         return error
       })
-      .finally(function () {
+      .finally(function() {
         // always executed
       })
   }
 
   getLandlords() {
-    return API.get('/landlords')
-      .then(function (response) {
+    return API.get("/landlords")
+      .then(function(response) {
         return response.data
       })
-      .catch(function (error) {
+      .catch(function(error) {
         return error
       })
-      .finally(function () {
+      .finally(function() {
         // always executed
       })
   }
 
   getRooms() {
-    return API.get('/rooms')
-      .then(function (response) {
+    return API.get("/rooms")
+      .then(function(response) {
         return response.data
       })
-      .catch(function (error) {
+      .catch(function(error) {
         return error
       })
-      .finally(function () {
+      .finally(function() {
         // always executed
       })
   }
 
   getTenants() {
-    return API.get('/tenants')
-      .then(function (response) {
+    return API.get("/tenants")
+      .then(function(response) {
         return response.data
       })
-      .catch(function (error) {
+      .catch(function(error) {
         return error
       })
-      .finally(function () {
+      .finally(function() {
         // always executed
       })
   }
@@ -126,7 +126,7 @@ class API {
       .finally()
   }
 
-  saveAgreement(id,newAgreement) {
+  saveAgreement(id, newAgreement) {
     return API.put(`/agreements/${id}/`, newAgreement)
   }
 
@@ -173,15 +173,15 @@ class API {
   createGuarantor(newGuarantors) {
     return API.post(`/guarantors/`, newGuarantors)
   }
-  
+
   createTenant(newTenant) {
-    return API.post('/tenants/', newTenant)
+    return API.post("/tenants/", newTenant)
   }
 
   createLandlord(newLandlord) {
     return API.post(`/landlords/`, newLandlord)
   }
-  
+
   createAgreement(newAgreement) {
     return API.post(`/agreements/`, newAgreement)
   }

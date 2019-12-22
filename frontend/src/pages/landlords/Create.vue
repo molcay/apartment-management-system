@@ -11,6 +11,7 @@
             v-model="landlord.title"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
             placeholder="Başlık/İsim"
           >
@@ -34,6 +35,7 @@
             v-model="landlord.address"
             class="input"
             :class="{'is-danger': errors && errors.address}"
+            style="width:500px;"
             type="text"
             placeholder="Adres"
           >
@@ -57,6 +59,7 @@
             v-model="landlord.bank_info"
             class="input"
             :class="{'is-danger': errors && errors.bank_info}"
+            style="width:500px;"
             type="text"
             placeholder="Banka Bilgisi"
           >
@@ -80,6 +83,7 @@
             v-model="landlord.iban"
             class="input"
             :class="{'is-danger': errors && errors.iban}"
+            style="width:500px;"
             type="text"
             placeholder="IBAN"
           >

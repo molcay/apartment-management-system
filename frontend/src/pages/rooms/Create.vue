@@ -11,8 +11,9 @@
             v-model="room.building_number"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="Bina Numarası"
           >
         </template>
       </FormInput>
@@ -26,8 +27,9 @@
             v-model="room.home_number"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="Ev Numarası"
           >
         </template>
       </FormInput>
@@ -41,8 +43,9 @@
             v-model="room.room_number"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="Oda Numarası"
           >
         </template>
       </FormInput>
@@ -56,19 +59,23 @@
             v-model="room.size"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="Boyut"
           >
         </template>
       </FormInput>
 
       <FormInput>
         <template v-slot:labelElement>
-          <label class="label">Başlık/İsim</label>
+          <label class="label">Mülk Sahipleri</label>
         </template>
         <template v-slot:inputElement>
           <div class="select">
             <select v-model="room.landlord">
+              <option value="-1">
+                Mülk Sahibi Seçiniz
+              </option>
               <option
                 v-for="l in landlords"
                 :key="l.id"
@@ -116,7 +123,9 @@ export default {
   name: "CreateRoom",
   data() {
     return {
-      room: {},
+      room: {
+        landlord:-1
+      },
       landlords: [],
       pageInfo: {
         title: "Odalar",

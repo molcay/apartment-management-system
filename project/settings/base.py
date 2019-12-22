@@ -54,6 +54,7 @@ THIRD_PARTY_APPS = [
     'webpack_loader',
     'rest_framework',
     'djoser',
+    'rest_framework.authtoken',
     'django_pyctx',
 ]
 

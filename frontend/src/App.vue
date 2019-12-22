@@ -78,27 +78,27 @@
   const tabRoutes = [
     {
       text: 'Odalar',
-      path: '/odalar',
+      path: '/yonetim/odalar',
       icon: 'fas fa-bed',
     },
     {
       text: 'Kiracılar',
-      path: tr_to_ascii('/kiracılar'),
+      path: tr_to_ascii('/yonetim/kiracılar'),
       icon: 'fas fa-user-alt',
     },
     {
       text: 'Sözleşmeler',
-      path: tr_to_ascii('/sözleşmeler'),
+      path: tr_to_ascii('/yonetim/sözleşmeler'),
       icon: 'fas fa-handshake',
     },
     {
       text: 'Kefiller',
-      path: '/kefiller',
+      path: '/yonetim/kefiller',
       icon: 'fas fa-users',
     },
     {
       text: 'Mülk Sahipleri',
-      path: tr_to_ascii('/mülk_sahipleri'),
+      path: tr_to_ascii('/yonetim/mülk_sahipleri'),
       icon: 'fas fa-building',
     },
   ]

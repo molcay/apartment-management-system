@@ -9,6 +9,9 @@
         <template v-slot:inputElement>
           <div class="select">
             <select v-model="agreement.room">
+              <option value="-1">
+                Oda Seçiniz
+              </option>
               <option
                 v-for="r in rooms"
                 :key="r.id"
@@ -29,6 +32,9 @@
         <template v-slot:inputElement>
           <div class="select">
             <select v-model="agreement.tenant">
+              <option value="-1">
+                Kiracı Adı-Soyadı Seçiniz
+              </option>
               <option
                 v-for="t in tenants"
                 :key="t.id"
@@ -49,6 +55,9 @@
         <template v-slot:inputElement>
           <div class="select">
             <select v-model="agreement.guarantor">
+              <option value="-1">
+                Kefilin Adı-Soyadı
+              </option>
               <option
                 v-for="g in guarantors"
                 :key="g.id"
@@ -71,6 +80,7 @@
             v-model="agreement.start_date"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:400px;"
             type="date"
             placeholder="Yıl-Ay-Gün (Örn:2020-01-01)"
           >
@@ -86,6 +96,7 @@
             v-model="agreement.end_date"
             class="input"
             :class="{'is-danger': errors && errors.end_date}"
+            style="width:400px;"
             type="date"
             placeholder="Yıl-Ay-Gün (Örn:2020-01-01)"
           >
@@ -101,7 +112,9 @@
             v-model="agreement.lease_price"
             class="input"
             :class="{'is-danger': errors && errors.lease_price}"
+            style="width:400px;"
             type="number"
+            placeholder="Kira Bedeli"
           >
         </template>
       </FormInput>
@@ -115,7 +128,9 @@
             v-model="agreement.dues"
             class="input"
             :class="{'is-danger': errors && errors.dues}"
+            style="width:400px;"
             type="number"
+            placeholder="Aidat Bedeli"
           >
         </template>
       </FormInput>
@@ -153,7 +168,11 @@ export default {
   name: "CreateAgreement",
   data() {
     return {
-      agreement: {},
+      agreement: {
+        room: -1,
+        tenant: -1,
+        guarantor: -1
+      },
       rooms: [],
       tenants: [],
       guarantors: [],

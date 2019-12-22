@@ -8,7 +8,7 @@
         </template>
         <template v-slot:inputElement>
           <input
-            v-model="newUser.username"
+            v-model="userLogin.username"
             class="input"
             :class="{'is-danger': errors && errors.title}"
             style="width:500px;"
@@ -19,26 +19,11 @@
       </FormInput>
       <FormInput>
         <template v-slot:labelElement>
-          <label class="label">E-posta</label>
-        </template>
-        <template v-slot:inputElement>
-          <input
-            v-model="newUser.email"
-            class="input"
-            :class="{'is-danger': errors && errors.title}"
-            style="width:500px;"
-            type="text"
-            placeholder="E-posta"
-          >
-        </template>
-      </FormInput>
-      <FormInput>
-        <template v-slot:labelElement>
           <label class="label">Parola</label>
         </template>
         <template v-slot:inputElement>
           <input
-            v-model="newUser.password"
+            v-model="userLogin.password"
             class="input"
             :class="{'is-danger': errors && errors.title}"
             style="width:500px;"
@@ -75,20 +60,20 @@
   import * as bulmaToast from 'bulma-toast'
 
   export default {
-    name: 'SignUp',
+    name: 'Login',
     data() {
       return {
-        newUser: {},
+        userLogin: {},
         errors:{},
         pageInfo: {
-          title: 'Kullanıcı Oluştur',
+          title: 'Sisteme giriş yap',
         },
       }
     },
     methods: {
       create: async function(){
       let errorMsg = ''
-      if (this.newUser.tc && this.newUser.tc.length !==11 ){
+      if (this.userLogin.tc && this.userLogin.tc.length !==11 ){
         errorMsg = `TC kimlik numarası 11 haneli olmalıdır.`
       }
 
@@ -102,9 +87,11 @@
         })
       } else {
 
-          const resp = await api.createUser(this.newUser)
-          if(resp.status===201){
-            return this.$router.push("/giris")
+          const resp = await api.loginUser(this.userLogin)
+          if(resp.status===200){
+            const token = resp.data.auth_token
+            localStorage.setItem("token", token)
+            return this.$router.push("/")
           }
         }
       }

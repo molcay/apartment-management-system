@@ -13,8 +13,9 @@
             v-model="tenant.first_name"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="İsim"
           >
         </template>
       </FormInput>
@@ -28,53 +29,25 @@
             v-model="tenant.last_name"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="Soyisim"
           >
         </template>
       </FormInput>
 
       <FormInput>
         <template v-slot:labelElement>
-          <label class="label">Adres</label>
-        </template>
-        <template v-slot:inputElement>
-          <input
-            v-model="tenant.address"
-            class="input"
-            :class="{'is-danger': errors && errors.title}"
-            type="text"
-            placeholder="Başlık/İsim"
-          >
-        </template>
-      </FormInput>
-
-      <FormInput>
-        <template v-slot:labelElement>
-          <label class="label">İş Adres</label>
-        </template>
-        <template v-slot:inputElement>
-          <input
-            v-model="tenant.work_address"
-            class="input"
-            :class="{'is-danger': errors && errors.title}"
-            type="text"
-            placeholder="Başlık/İsim"
-          >
-        </template>
-      </FormInput>
-
-      <FormInput>
-        <template v-slot:labelElement>
-          <label class="label">Tc</label>
+          <label class="label">T.C. Kimlik Numarası</label>
         </template>
         <template v-slot:inputElement>
           <input
             v-model="tenant.tc"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="T.C. Kimlik Numarası"
           >
         </template>
       </FormInput>
@@ -88,11 +61,45 @@
             v-model="tenant.gsm"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="Telefon Numarası"
           >
         </template>
       </FormInput>
+
+      <FormInput>
+        <template v-slot:labelElement>
+          <label class="label">Adres</label>
+        </template>
+        <template v-slot:inputElement>
+          <input
+            v-model="tenant.address"
+            class="input"
+            :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
+            type="text"
+            placeholder="Adres"
+          >
+        </template>
+      </FormInput>
+
+      <FormInput>
+        <template v-slot:labelElement>
+          <label class="label">İş Adresi</label>
+        </template>
+        <template v-slot:inputElement>
+          <input
+            v-model="tenant.work_address"
+            class="input"
+            :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
+            type="text"
+            placeholder="İş Adresi"
+          >
+        </template>
+      </FormInput>
+
 
       <FormInput>
         <template v-slot:labelElement>
@@ -103,8 +110,9 @@
             v-model="tenant.email"
             class="input"
             :class="{'is-danger': errors && errors.title}"
+            style="width:500px;"
             type="text"
-            placeholder="Başlık/İsim"
+            placeholder="E-Posta"
           >
         </template>
       </FormInput>

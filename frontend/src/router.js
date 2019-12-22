@@ -22,6 +22,7 @@ import EditedRoom from './pages/rooms/Edit'
 import EditedTenant from './pages/tenants/Edit'
 import EditedAgreement from './pages/agreements/Edit'
 import SignUp from './pages/accounts/SignUp'
+import Login from './pages/accounts/Login'
 import SearchResult from './pages/SearchResult'
 
 import {tr_to_ascii} from "./helper"
@@ -38,87 +39,91 @@ const router = new VueRouter({
       component: SignUp,
     },
     {
-      path: '/odalar',
+      path: '/giris',
+      component: Login,
+    },
+    {
+      path: '/yonetim/odalar',
       component: RoomList,
     },
     {
-      path: '/odalar/ekle',
+      path: '/yonetim/odalar/ekle',
       component: CreateRoom,
     },
     {
-      path: '/odalar/:id/detay',
+      path: '/yonetim/odalar/:id/detay',
       component: DetailedRoom,
     },
     {
-      path: tr_to_ascii('/odalar/:id/düzenle'),
+      path: tr_to_ascii('/yonetim/odalar/:id/düzenle'),
       component: EditedRoom,
     },
     {
-      path: tr_to_ascii('/kiracılar'),
+      path: tr_to_ascii('/yonetim/kiracılar'),
       component: TenantList,
     },
     {
-      path: tr_to_ascii('/kiracılar/ekle'),
+      path: tr_to_ascii('/yonetim/kiracılar/ekle'),
       component: CreateTenant,
     },
     {
-      path: tr_to_ascii('/kiracılar/:id/detay'),
+      path: tr_to_ascii('/yonetim/kiracılar/:id/detay'),
       component: DetailedTenant,
     },
     {
-      path: tr_to_ascii('/kiracılar/:id/düzenle'),
+      path: tr_to_ascii('/yonetim/kiracılar/:id/düzenle'),
       component: EditedTenant,
     },
     {
-      path: '/arama',
+      path: '/yonetim/arama',
       component: SearchResult,
     },
     {
-      path: tr_to_ascii('/sözleşmeler'),
+      path: tr_to_ascii('/yonetim/sözleşmeler'),
       component: AgreementList,
     },
     {
-      path: tr_to_ascii('/sözleşmeler/ekle'),
+      path: tr_to_ascii('/yonetim/sözleşmeler/ekle'),
       component: CreateAgreement,
     },
     {
-      path: tr_to_ascii('/sözleşmeler/:id/detay'),
+      path: tr_to_ascii('/yonetim/sözleşmeler/:id/detay'),
       component: DetailedAgreement,
     },
     {
-      path: tr_to_ascii('/sözleşmeler/:id/düzenle'),
+      path: tr_to_ascii('/yonetim/sözleşmeler/:id/düzenle'),
       component: EditedAgreement,
     },
     {
-      path: '/kefiller',
+      path: '/yonetim/kefiller',
       component: GuarantorList,
     },
     {
-      path: '/kefiller/ekle',
+      path: '/yonetim/kefiller/ekle',
       component: CreateGuarantor,
     },
     {
-      path: '/kefiller/:id/detay',
+      path: '/yonetim/kefiller/:id/detay',
       component: DetailedGuarantor,
     },
     {
-      path: tr_to_ascii('/kefiller/:id/düzenle'),
+      path: tr_to_ascii('/yonetim/kefiller/:id/düzenle'),
       component: EditedGuarantor,
     },
     {
-      path: tr_to_ascii('/mülk_sahipleri'),
+      path: tr_to_ascii('/yonetim/mülk_sahipleri'),
       component: LandlordList,
     },
     {
-      path: tr_to_ascii('/mülk_sahipleri/ekle'),
+      path: tr_to_ascii('/yonetim/mülk_sahipleri/ekle'),
       component: CreateLandlord,
     },
     {
-      path: tr_to_ascii('/mülk_sahipleri/:id/detay'),
+      path: tr_to_ascii('/yonetim/mülk_sahipleri/:id/detay'),
       component: DetailedLandlord,
     },
     {
-      path: tr_to_ascii('/mülk_sahipleri/:id/düzenle'),
+      path: tr_to_ascii('/yonetim/mülk_sahipleri/:id/düzenle'),
       component: EditedLandlord,
     },
   ]
