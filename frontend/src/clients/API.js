@@ -19,6 +19,19 @@ class API {
     return axios.delete(`${API.API_V1_PREFIX}${path}`)
   }
 
+  getIssues() {
+    return API.get('/issues')
+      .then(function (response) {
+        return response.data
+      })
+      .catch(function (error) {
+        return error
+      })
+      .finally(function () {
+        // always executed
+      })
+  }
+  
   getAgreements() {
     return API.get("/agreements")
       .then(function(response) {

@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 
 import Home from './pages/home/Home'
+import IssueList from './pages/issues/List'
 import RoomList from './pages/rooms/List'
 import TenantList from './pages/tenants/List'
 import AgreementList from './pages/agreements/List'
@@ -41,6 +42,10 @@ const router = new VueRouter({
     {
       path: '/giris',
       component: Login,
+    },
+    {
+      path: '/arizalar',
+      component: IssueList,
     },
     {
       path: '/yonetim/odalar',
