@@ -132,6 +132,13 @@ class API {
       .finally()
   }
 
+  getIssue(id) {
+    return API.get(`/issues/${id}/`)
+      .then(response => response.data)
+      .catch(error => error)
+      .finally()
+  }
+
   searchTenant(searchText) {
     return API.get(`/tenants?search=${searchText}`)
       .then(response => response.data)
@@ -157,6 +164,10 @@ class API {
 
   saveTenant(id, newTenant) {
     return API.put(`/tenants/${id}/`, newTenant)
+  }
+
+  saveIssue(id, newIssue) {
+    return API.put(`/issues/${id}/`, newIssue)
   }
 
   deleteAgreement() {

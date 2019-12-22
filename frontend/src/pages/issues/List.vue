@@ -7,15 +7,15 @@
     >
       <thead>
         <tr>
-          <th>Adı - Soyadı</th>
+          <th>Kullanıcı Adı</th>
           <th>Arıza Tanımı</th>
           <th>Arıza Türü</th>
           <th>Oluşturulma Tarihi</th>
-          <!--<th class="has-text-centered">
-            Seçenekler
-          </th>-->
           <th>Arıza Durumu</th>
           <th>Arıza Geri Bildirimi</th>
+          <th class="has-text-centered">
+            Seçenekler
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -29,13 +29,12 @@
           <td> {{ i.created_at }} </td>
           <td> {{ i.status }} </td>
           <td> {{ i.reply }} </td>
-
-          <!--<td>
+          <td>
             <EntityActions
               :entity="i"
               :get-entity-list="getIssues"
             />
-          </td>-->
+          </td>
         </tr>
       </tbody>
     </table>
@@ -51,14 +50,6 @@
       return {
         pageInfo: {
           title: 'Arızalar',
-          buttons: [
-            {
-              text: 'Yeni Kefil',
-              icon: 'fa fa-plus-circle',
-              color: 'is-success',
-              path_suffix: `${this.$route.path}/ekle`,
-            },
-          ],
         },
         issues: [],
       }
@@ -69,6 +60,10 @@
     methods: {
       getIssues: async function () {
         this.issues = await api.getIssues()
+        for(var i=0;i<this.issues.length;i++){
+          var d = this.issues[i].created_at.slice(0, 10).split('-')
+          this.issues[i].created_at = d[2] +'/'+ d[1] +'/'+ d[0]
+        }
       }
     }
   }

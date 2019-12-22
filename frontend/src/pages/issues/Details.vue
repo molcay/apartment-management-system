@@ -3,101 +3,121 @@
     <PageHeader
       :page-info="pageInfo"
     />
-    <FormInput>
-      <template v-slot:labelElement>
-        <label
-          for="field-first-name"
-          class="label"
-        >
-          Ad
-        </label>
-      </template>
-      <template v-slot:inputElement>
-        <div class="input">
-          {{ guarantor.first_name }}
-        </div>
-      </template>
-    </FormInput>
+    <div v-if="issue.created_by">
+      <FormInput>
+        <template v-slot:labelElement>
+          <label
+            for="field-first-name"
+            class="label"
+          >
+            Kullanıcı Adı
+          </label>
+        </template>
+        <template v-slot:inputElement>
+          <p
+            class="input"
+            disabled="disabled"
+          >
+            {{ issue.created_by.username }}
+          </p>
+        </template>
+      </FormInput>
 
-    <FormInput>
-      <template v-slot:labelElement>
-        <label
-          for="field-last-name"
-          class="label"
-        >
-          Soyad
-        </label>
-      </template>
-      <template v-slot:inputElement>
-        <div class="input">
-          {{ guarantor.last_name }}
-        </div>
-      </template>
-    </FormInput>
+      <FormInput>
+        <template v-slot:labelElement>
+          <label
+            for="field-last-name"
+            class="label"
+          >
+            Arıza Tanımı
+          </label>
+        </template>
+        <template v-slot:inputElement>
+          <p
+            class="input"
+            disabled="disabled"
+          >
+            {{ issue.summary }}
+          </p>
+        </template>
+      </FormInput>
 
-    <FormInput>
-      <template v-slot:labelElement>
-        <label
-          for="field-tc"
-          class="label"
-        >
-          T.C. Kimlik Numarası
-        </label>
-      </template>
-      <template v-slot:inputElement>
-        <div class="input">
-          {{ guarantor.tc }}
-        </div>
-      </template>
-    </FormInput>
+      <FormInput>
+        <template v-slot:labelElement>
+          <label
+            for="field-tc"
+            class="label"
+          >
+            Arıza Türü
+          </label>
+        </template>
+        <template v-slot:inputElement>
+          <p
+            class="input"
+            disabled="disabled"
+          >
+            {{ issue.issue_type }}
+          </p>
+        </template>
+      </FormInput>
 
-    <FormInput>
-      <template v-slot:labelElement>
-        <label
-          for="field-gsm"
-          class="label"
-        >
-          Cep Telefonu
-        </label>
-      </template>
-      <template v-slot:inputElement>
-        <div class="input">
-          {{ guarantor.gsm }}
-        </div>
-      </template>
-    </FormInput>
+      <FormInput>
+        <template v-slot:labelElement>
+          <label
+            for="field-gsm"
+            class="label"
+          >
+            Oluşturulma Tarihi
+          </label>
+        </template>
+        <template v-slot:inputElement>
+          <p
+            class="input"
+            disabled="disabled"
+          >
+            {{ issue.created_at }}
+          </p>
+        </template>
+      </FormInput>
 
-    <FormInput>
-      <template v-slot:labelElement>
-        <label
-          for="field-address"
-          class="label"
-        >
-          Adresi
-        </label>
-      </template>
-      <template v-slot:inputElement>
-        <div class="input">
-          {{ guarantor.address }}
-        </div>
-      </template>
-    </FormInput>
+      <FormInput>
+        <template v-slot:labelElement>
+          <label
+            for="field-address"
+            class="label"
+          >
+            Arıza Durumu
+          </label>
+        </template>
+        <template v-slot:inputElement>
+          <p
+            class="input"
+            disabled="disabled"
+          >
+            {{ issue.status }}
+          </p>
+        </template>
+      </FormInput>
 
-    <FormInput>
-      <template v-slot:labelElement>
-        <label
-          for="field-work-address"
-          class="label"
-        >
-          İş Adresi
-        </label>
-      </template>
-      <template v-slot:inputElement>
-        <div class="input">
-          {{ guarantor.work_address }}
-        </div>
-      </template>
-    </FormInput>
+      <FormInput>
+        <template v-slot:labelElement>
+          <label
+            for="field-work-address"
+            class="label"
+          >
+            Arıza Geri Bildirimi
+          </label>
+        </template>
+        <template v-slot:inputElement>
+          <p
+            class="input"
+            disabled="disabled"
+          >
+            {{ issue.reply }}
+          </p>
+        </template>
+      </FormInput>
+    </div>
   </div>
 </template>
 
@@ -106,12 +126,12 @@
   import api from "../../clients/API"
 
   export default {
-    name: 'DetailedGuarantor',
+    name: 'DetailedIssue',
     data() {
       return {
-        guarantor: {},
+        issue: {},
         pageInfo: {
-          title: 'Kefil Detayı',
+          title: 'Arıza Detayı',
           buttons: [
             {
               text: 'Düzenle',
@@ -125,12 +145,14 @@
     },
     mounted() {
       this.getDetails(this.$route.params.id).then(data => {
-          this.guarantor = data
-        })
+          this.issue = data
+          var d = this.issue.created_at.slice(0, 10).split('-')
+          this.issue.created_at = d[2] +'/'+ d[1] +'/'+ d[0]
+      })
     },
     methods: {
       getDetails: (id) => {
-        return api.getGuarantor(id)
+        return api.getIssue(id)
       }
     },
   }

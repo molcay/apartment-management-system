@@ -6,17 +6,21 @@ from rest_framework.validators import UniqueValidator
 from api.models import Guarantor, Tenant, Landlord, Room, Agreement, Issue
 from project.utils.TurkishIdentityNumberUtils import TurkishIdentityNumberUtils
 
+
 class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'first_name', 'last_name', 'date_joined', 'last_login')
 
 
-class IssueSerializer(serializers.ModelSerializer):
-    created_by = UserDetailSerializer()
+class IssueUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Issue
         fields = '__all__'
+
+
+class IssueSerializer(IssueUpdateSerializer):
+    created_by = UserDetailSerializer()
 
 
 class GuarantorSerializer(serializers.ModelSerializer):
@@ -38,7 +42,6 @@ class LandlordSerializer(serializers.ModelSerializer):
 
 
 class RoomUpdateSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Room
         fields = '__all__'
@@ -49,7 +52,6 @@ class RoomSerializer(RoomUpdateSerializer):
 
 
 class AgreementUpdateSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Agreement
         fields = '__all__'

@@ -5,7 +5,7 @@ from rest_framework import generics, viewsets, filters
 from api.doc_manager.manager import DocManager
 from api.models import Tenant, Guarantor, Landlord, Room, Agreement, AgreementFile, ApartInfo, Issue
 from api.serializers import TenantSerializer, GuarantorSerializer, LandlordSerializer, RoomSerializer, \
-    AgreementSerializer, RoomUpdateSerializer, AgreementUpdateSerializer, IssueSerializer
+    AgreementSerializer, RoomUpdateSerializer, AgreementUpdateSerializer, IssueSerializer, IssueUpdateSerializer
 
 
 class TenantListCreateView(generics.ListCreateAPIView):
@@ -87,15 +87,21 @@ def generate_files(request, agreement_id):
     print('file.file.path', file.file.path)
     return JsonResponse({'status': 1})
 
+
 class IssueListCreateView(generics.ListCreateAPIView):
     queryset = Issue.objects.all()
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
-            return IssueSerializer
+            return IssueUpdateSerializer
         return IssueSerializer
 
 
 class IssueRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Issue.objects.all()
-    serializer_class = IssueSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'PUT':
+            return IssueUpdateSerializer
+        return IssueSerializer
+

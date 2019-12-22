@@ -17,11 +17,13 @@ import DetailedLandlord from './pages/landlords/Details'
 import DetailedGuarantor from './pages/guarantors/Details'
 import DetailedRoom from './pages/rooms/Details'
 import DetailedTenant from './pages/tenants/Details'
+import DetailedIssue from './pages/issues/Details'
 import EditedLandlord from './pages/landlords/Edit'
 import EditedGuarantor from './pages/guarantors/Edit'
 import EditedRoom from './pages/rooms/Edit'
 import EditedTenant from './pages/tenants/Edit'
 import EditedAgreement from './pages/agreements/Edit'
+import EditedIssue from './pages/issues/Edit'
 import SignUp from './pages/accounts/SignUp'
 import Login from './pages/accounts/Login'
 import SearchResult from './pages/SearchResult'
@@ -44,8 +46,16 @@ const router = new VueRouter({
       component: Login,
     },
     {
-      path: '/arizalar',
+      path: tr_to_ascii('/yonetim/arızalar'),
       component: IssueList,
+    },
+    {
+      path: tr_to_ascii('/yonetim/arızalar/:id/detay'),
+      component: DetailedIssue,
+    },
+    {
+      path: tr_to_ascii('/yonetim/arızalar/:id/düzenle'),
+      component: EditedIssue,
     },
     {
       path: '/yonetim/odalar',
