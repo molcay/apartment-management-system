@@ -144,6 +144,12 @@ class API {
         // always executed
       })
   }
+  getIssue(id) {
+    return API.get(`/issues/${id}/`)
+      .then(response => response.data)
+      .catch(error => error)
+      .finally()
+  }
 
   searchTenant(searchText) {
     return API.get(`/tenants?search=${searchText}`)
@@ -174,6 +180,9 @@ class API {
 
   saveCopon(id, newCoupon) {
     return API.put(`/coupons/${id}/`, newCoupon)
+  }
+  saveIssue(id, newIssue) {
+    return API.put(`/issues/${id}/`, newIssue)
   }
 
   deleteAgreement() {

@@ -22,6 +22,7 @@ urlpatterns = [
     path('coupons/', views.CouponListCreateView.as_view(), name='coupons'),
     path('coupons/<int:pk>/', views.CouponRetrieveUpdateDestroyView.as_view(), name='coupon_actions'),
     path('guarantors/<int:pk>/', views.IssueRetrieveUpdateDestroyView.as_view(), name='issue_actions'),
+    path('issues/<int:pk>/', views.IssueRetrieveUpdateDestroyView.as_view(), name='issue_actions'),
 
 
 ]
