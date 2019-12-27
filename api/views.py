@@ -3,9 +3,9 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics, viewsets, filters
 
 from api.doc_manager.manager import DocManager
-from api.models import Tenant, Guarantor, Landlord, Room, Agreement, AgreementFile, ApartInfo, Issue
+from api.models import Tenant, Guarantor, Landlord, Room, Agreement, AgreementFile, ApartInfo, Issue, Coupon
 from api.serializers import TenantSerializer, GuarantorSerializer, LandlordSerializer, RoomSerializer, \
-    AgreementSerializer, RoomUpdateSerializer, AgreementUpdateSerializer, IssueSerializer
+    AgreementSerializer, RoomUpdateSerializer, AgreementUpdateSerializer, IssueSerializer, CouponSerializer
 
 
 class TenantListCreateView(generics.ListCreateAPIView):
@@ -99,3 +99,17 @@ class IssueListCreateView(generics.ListCreateAPIView):
 class IssueRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Issue.objects.all()
     serializer_class = IssueSerializer
+
+
+class CouponListCreateView(generics.ListCreateAPIView):
+    queryset = Coupon.objects.all()
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return CouponSerializer
+        return CouponSerializer
+
+
+class CouponRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Coupon.objects.all()
+    serializer_class = CouponSerializer

@@ -3,7 +3,7 @@ from rest_framework import serializers
 from djoser.serializers import UserCreateSerializer as BaseUserRegistrationSerializer
 from rest_framework.validators import UniqueValidator
 
-from api.models import Guarantor, Tenant, Landlord, Room, Agreement, Issue
+from api.models import Guarantor, Tenant, Landlord, Room, Agreement, Issue, Coupon
 from project.utils.TurkishIdentityNumberUtils import TurkishIdentityNumberUtils
 
 class UserDetailSerializer(serializers.ModelSerializer):
@@ -16,6 +16,13 @@ class IssueSerializer(serializers.ModelSerializer):
     created_by = UserDetailSerializer()
     class Meta:
         model = Issue
+        fields = '__all__'
+
+class CouponSerializer(serializers.ModelSerializer):
+    given_to = UserDetailSerializer()
+    expired_at = serializers.ReadOnlyField()
+    class Meta:
+        model = Coupon
         fields = '__all__'
 
 

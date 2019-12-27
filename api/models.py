@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import timedelta
 
 
 class Person(models.Model):
@@ -127,3 +128,21 @@ class Issue(models.Model):
 
     def __str__(self):
         return self.summary
+
+
+class Coupon(models.Model):
+    coupon_code = models.CharField('Kupon Kodu', max_length=20)
+    expire_in = models.IntegerField('İnternet Erişim Kodu Süresi')
+    started_at = models.DateTimeField('Veriliş Tarihi', blank=True)
+    given_to = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)    
+
+    @property
+    def expired_at(self):
+        return self.started_at + timedelta(hours=self.expire_in)
+
+    class Meta:
+        verbose_name = 'İnternet Erişim Kodu'
+        verbose_name_plural = 'İnternet Erişim Kodları'
+
+    def __str__(self):
+        return self.coupon_code

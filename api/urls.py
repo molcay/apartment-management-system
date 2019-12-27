@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     path('agreements/<int:agreement_id>/create_files', views.generate_files, name='agreements'),
     path('issues/', views.IssueListCreateView.as_view(), name='issues'),
+    path('coupons/', views.CouponListCreateView.as_view(), name='coupons'),
+    path('coupons/<int:pk>/', views.CouponRetrieveUpdateDestroyView.as_view(), name='coupon_actions'),
     path('guarantors/<int:pk>/', views.IssueRetrieveUpdateDestroyView.as_view(), name='issue_actions'),
 
 

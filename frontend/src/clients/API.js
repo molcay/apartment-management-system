@@ -132,6 +132,19 @@ class API {
       .finally()
   }
 
+  getCoupons() {
+    return API.get('/coupons')
+      .then(function (response) {
+        return response.data
+      })
+      .catch(function (error) {
+        return error
+      })
+      .finally(function () {
+        // always executed
+      })
+  }
+
   searchTenant(searchText) {
     return API.get(`/tenants?search=${searchText}`)
       .then(response => response.data)
@@ -159,6 +172,10 @@ class API {
     return API.put(`/tenants/${id}/`, newTenant)
   }
 
+  saveCopon(id, newCoupon) {
+    return API.put(`/coupons/${id}/`, newCoupon)
+  }
+
   deleteAgreement() {
     return API.delete(``)
   }
@@ -177,6 +194,10 @@ class API {
 
   deleteTenant(id) {
     return API.delete(`/tenants/${id}`)
+  }
+
+  deleteCoupon(id) {
+    return API.delete(`/coupons/${id}`)
   }
 
   createRoom(newRooms) {
@@ -201,6 +222,10 @@ class API {
 
   createAgreementFiles(id) {
     return API.get(`/agreements/${id}/create_files`)
+  }
+
+  createCoupons(id) {
+    return API.get(`/coupons/${id}/create_files`)
   }
 }
 

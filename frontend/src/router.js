@@ -7,21 +7,25 @@ import TenantList from './pages/tenants/List'
 import AgreementList from './pages/agreements/List'
 import GuarantorList from './pages/guarantors/List'
 import LandlordList from './pages/landlords/List'
+import CouponList from './pages/coupons/List'
 import CreateRoom from './pages/rooms/Create'
 import CreateLandlord from './pages/landlords/Create'
 import CreateTenant from './pages/tenants/Create'
 import CreateGuarantor from './pages/guarantors/Create'
 import CreateAgreement from './pages/agreements/Create'
+import CreateCoupon from './pages/coupons/Create'
 import DetailedAgreement from './pages/agreements/Details'
 import DetailedLandlord from './pages/landlords/Details'
 import DetailedGuarantor from './pages/guarantors/Details'
 import DetailedRoom from './pages/rooms/Details'
 import DetailedTenant from './pages/tenants/Details'
+import DetailedCoupon from './pages/coupons/Details'
 import EditedLandlord from './pages/landlords/Edit'
 import EditedGuarantor from './pages/guarantors/Edit'
 import EditedRoom from './pages/rooms/Edit'
 import EditedTenant from './pages/tenants/Edit'
 import EditedAgreement from './pages/agreements/Edit'
+import EditedCoupon from './pages/coupons/Edit'
 import SignUp from './pages/accounts/SignUp'
 import Login from './pages/accounts/Login'
 import SearchResult from './pages/SearchResult'
@@ -130,6 +134,22 @@ const router = new VueRouter({
     {
       path: tr_to_ascii('/yonetim/mülk_sahipleri/:id/düzenle'),
       component: EditedLandlord,
+    },
+    {
+      path: tr_to_ascii('/yonetim/kuponlar'),
+      component: CouponList,
+    },
+    {
+      path: tr_to_ascii('/yonetim/kuponlar/ekle'),
+      component: CreateCoupon,
+    },
+    {
+      path: tr_to_ascii('/yonetim/kuponlar/:id/detay'),
+      component: DetailedCoupon,
+    },
+    {
+      path: tr_to_ascii('/yonetim/kuponlar/:id/düzenle'),
+      component: EditedCoupon,
     },
   ]
 })

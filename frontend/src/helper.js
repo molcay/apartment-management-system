@@ -16,3 +16,8 @@ const tr_to_ascii_map = {
 export const tr_to_ascii = (text) => {
   return text.replace(/(([ÖöİıÜüÇçĞğŞş]))/g, letter => tr_to_ascii_map[letter])
 }
+
+export const human_readable_date = (dateAsString) => {
+  let dateobj = new Date(dateAsString)
+  return dateobj.toLocaleDateString() +" "+ dateobj.toLocaleTimeString()
+}

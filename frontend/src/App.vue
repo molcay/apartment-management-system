@@ -102,8 +102,12 @@
       icon: 'fas fa-building',
     },    {
       text: 'Arızalar',
-      path: tr_to_ascii('/arızalar'),
+      path: tr_to_ascii('/yonetim/arızalar'),
       icon: 'fas fa-wrench',
+    },    {
+      text: 'Kuponlar',
+      path: tr_to_ascii('/yonetim/kuponlar'),
+      icon: 'fas fa-ticket-alt',
     },
   ]
 
