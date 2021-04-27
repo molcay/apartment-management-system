@@ -29,11 +29,6 @@ pipenv install --dev
 python manage.py runserver
 ```
 
-* If you want to populated database, then use:
-```bash
-python manage.py shell < scripts/seed.py
-```
-
 #### Frontend Setup
 
 * Change directory to `frontend`:
